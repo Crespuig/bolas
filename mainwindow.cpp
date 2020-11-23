@@ -1,23 +1,23 @@
 #include "mainwindow.h"
+#include "math.h"
+#include "bola.h"
 #include <QPaintEvent>
 #include <QPainter>
 #include <QTimer>
+#include <QBrush>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         resize(800, 600);
 
         temporizador = new QTimer();
-        temporizador->setInterval(5);
+        temporizador->setInterval(20);
         temporizador->setSingleShot(false);
         temporizador->start();
 
         connect(temporizador, SIGNAL(timeout()),
                 this, SLOT(slotRepintar()));
 
-        posicionX = 300;
-        posicionY = 100;
-        derecha = true;
-        abajo = true;
+        bola = Bola(20, 40, 0.23, 0.5);
 
 }
 
@@ -42,7 +42,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
 
 void MainWindow::paintEvent(QPaintEvent * evento){
         QPainter pintor(this);
-        pintor.fillRect(posicionX, posicionY, 200, 200, QColor("red"));       
+        QBrush brush(QColor("red"));
+        pintor.setBrush(brush);
+        pintor.drawEllipse(bola.posicionX, bola.posicionY, 200, 200);       
 }
         
 /**************************************************************************************************************/
@@ -51,30 +53,9 @@ void MainWindow::paintEvent(QPaintEvent * evento){
 
 /******************************************** SLOTS **********************************************************/
 
-void MainWindow::slotRepintar(){ 
-        // pedir al motor Qt que repinte la ventana
-        if (posicionX >= 600){
-                derecha = false;
-        }else if (posicionX <= 0){
-                derecha = true;
-        }
-        if (posicionY >= 400){
-                abajo = false;
-        }else if (posicionY <= 0){
-                abajo = true;
-        }
+void MainWindow::slotRepintar(){
+        bola.moverBola(width(), height());
         
-        if (derecha >= true){
-                posicionX++;
-        }else if(derecha <= false){
-                posicionX--;
-        }
-        if (abajo >= true){
-                posicionY++;
-        }else if(abajo <= false){
-                posicionY--;
-        }
-
         update();
 }
 

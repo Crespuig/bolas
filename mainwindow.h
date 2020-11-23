@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QPaintEvent>
 #include <QTimer>
-
+#include "bola.h"
 
 class MainWindow : public QMainWindow{
 Q_OBJECT
@@ -13,12 +13,8 @@ public:
     MainWindow(QWidget *parent = NULL);
 
     void paintEvent(QPaintEvent *event);
-    
-    int posicionX;
-    int posicionY;
-    bool derecha;
-    bool abajo;
 
+    Bola bola;
 
     QTimer *temporizador;
 
