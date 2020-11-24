@@ -5,6 +5,8 @@
 #include <QPaintEvent>
 #include <QTimer>
 #include "bola.h"
+#include <QVector>
+
 
 class MainWindow : public QMainWindow{
 Q_OBJECT
@@ -17,6 +19,10 @@ public:
     Bola bola;
 
     QTimer *temporizador;
+
+    QVector <Bola*> bolas;
+
+    void inicializarBolas();
 
 public slots:
     void slotRepintar();

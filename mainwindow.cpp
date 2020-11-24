@@ -17,10 +17,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         connect(temporizador, SIGNAL(timeout()),
                 this, SLOT(slotRepintar()));
 
-        bola = Bola(20, 40, 0.23, 0.5);
+
+        inicializarBolas();
 
 }
 
+void MainWindow::inicializarBolas(){
+        for (int i = 0; i < 20; i++){
+              bolas.append(new Bola(random()%width(),
+                                random()%height(),
+                                ((4 + random()%50 / 50.1) - 0.5),
+                                ((4 + random()%50 / 50.1) - 0.5)));
+        }
+        
+        
+}
 /******************************************** CREAR ACCIONES ***************************************************/
 
 
@@ -42,9 +53,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
 
 void MainWindow::paintEvent(QPaintEvent * evento){
         QPainter pintor(this);
-        QBrush brush(QColor("red"));
-        pintor.setBrush(brush);
-        pintor.drawEllipse(bola.posicionX, bola.posicionY, 200, 200);       
+        
+        for (int i = 0; i < bolas.size(); i++){
+                bolas.at(i)->pintar(pintor);
+        }
+       
+        
 }
         
 /**************************************************************************************************************/
@@ -54,8 +68,20 @@ void MainWindow::paintEvent(QPaintEvent * evento){
 /******************************************** SLOTS **********************************************************/
 
 void MainWindow::slotRepintar(){
-        bola.moverBola(width(), height());
+        for (int i = 0; i < bolas.size(); i++){
+                bolas.at(i)->moverBola(width(), height());         
+        }
         
+        for (int i = 0; i < bolas.size(); i++){
+                for (int j = 0; j < bolas.size(); j++){
+                       if (bolas.at(i) != bolas.at(j)){
+                               bolas.at(i)->choca(bolas.at(j));
+                       }
+                }
+                
+        }
+        
+
         update();
 }
 
