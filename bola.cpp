@@ -49,7 +49,7 @@ bool Bola::choca(Bola * otra){
 
         Bola *derecha, *izquierda;
         Bola *arriba, *abajo;
-
+        bool rebote = false;
 
         if (this == otra){
                 return false;
@@ -82,15 +82,17 @@ bool Bola::choca(Bola * otra){
                 float temp = izquierda->velX;
                 izquierda->velX = derecha->velX;
                 derecha->velX=temp;
+                rebote = true;
         }
 
         if (arriba->velY > abajo->velY){
                 float temp = abajo->velY;
                 abajo->velY = arriba->velY;
                 arriba->velY = temp;
+                rebote = true;
         }
         
         
         
-        return false;
+        return rebote;
 }

@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
 }
 
 void MainWindow::inicializarBolas(){
-        for (int i = 0; i < 20; i++){
+        for (int i = 0; i < 50; i++){
               bolas.append(new Bola(random()%width(),
                                 random()%height(),
                                 ((4 + random()%50 / 50.1) - 0.5),

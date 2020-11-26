@@ -6,6 +6,7 @@
 #include <QTimer>
 #include "bola.h"
 #include <QVector>
+#include "dinformacion.h"
 
 
 class MainWindow : public QMainWindow{
@@ -19,13 +20,18 @@ public:
     Bola bola;
 
     QTimer *temporizador;
-
     QVector <Bola*> bolas;
+    //QMenu * menuPartidasGuardadas;
 
     void inicializarBolas();
+    void incializarMenus();
+
+    DInformacion * dInformacion;
+    QAction * accionInformacion;
 
 public slots:
     void slotRepintar();
+    void slotDInformacion();
 
 };
 
