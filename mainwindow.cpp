@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
 
 
         inicializarBolas();
+        dInformacion = NULL;
 
 }
 
