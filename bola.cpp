@@ -46,13 +46,51 @@ void Bola::pintar(QPainter &pintor){
 
 
 bool Bola::choca(Bola * otra){
+
+        Bola *derecha, *izquierda;
+        Bola *arriba, *abajo;
+
+
+        if (this == otra){
+                return false;
+        }
+        
         float distancia = sqrtf(
                 powf((posicionX - otra -> posicionX), 2) + powf((posicionY - otra -> posicionY), 2));
 
-        if (distancia <= diametro){
-                velX = velY = otra->velX = otra->velY = 0;
+        if (distancia > diametro){
+                return false;
         }
 
-        return false;
+        if (this->posicionX > otra->posicionX){
+                derecha=this;
+                izquierda=otra;
+        }else{
+                izquierda=this;
+                derecha=otra;
+        }
+
+        if (this->posicionY > otra->posicionY){
+                abajo=this;
+                arriba=otra;
+        }else{
+                arriba=this;
+                abajo=otra;
+        }
+
+        if (izquierda->velX > derecha->velX){
+                float temp = izquierda->velX;
+                izquierda->velX = derecha->velX;
+                derecha->velX=temp;
+        }
+
+        if (arriba->velY > abajo->velY){
+                float temp = abajo->velY;
+                abajo->velY = arriba->velY;
+                arriba->velY = temp;
+        }
         
+        
+        
+        return false;
 }
