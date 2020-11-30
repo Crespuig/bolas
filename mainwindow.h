@@ -22,12 +22,13 @@ public:
     QTimer *temporizador;
     QVector <Bola*> bolas;
     //QMenu * menuPartidasGuardadas;
+    Bola * bolaJugador;
 
     void inicializarBolas();
     void incializarMenus();
 
     DInformacion * dInformacion;
-    QAction * accionInformacion;
+    QAction * accionDInformacion;
 
 public slots:
     void slotRepintar();

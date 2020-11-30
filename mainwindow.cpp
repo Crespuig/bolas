@@ -5,6 +5,8 @@
 #include <QPainter>
 #include <QTimer>
 #include <QBrush>
+#include <QMenuBar>
+#include <QMenu>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         resize(800, 600);
@@ -19,38 +21,57 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
 
 
         inicializarBolas();
+        incializarMenus();
         dInformacion = NULL;
 
 }
 
 void MainWindow::inicializarBolas(){
-        for (int i = 0; i < 50; i++){
+        for (int i = 0; i < 20; i++){
               bolas.append(new Bola(random()%width(),
                                 random()%height(),
                                 ((4 + random()%50 / 50.1) - 0.5),
                                 ((4 + random()%50 / 50.1) - 0.5)));
         }
         
+        bolaJugador = new Bola(100,100,0,0);
+        bolaJugador->color = QColor("black");
         
 }
-/******************************************** CREAR ACCIONES ***************************************************/
+
+void MainWindow::incializarMenus(){
+        
+        QMenu * menuFichero = menuBar()->addMenu("Fichero");
+        
+        accionDInformacion = new QAction("Informacion basica", this);
+        //accionDInformacion->setIcon(QIcon("./images/buscar.jpg"));
+        //accionDInformacion->setShortcut(QKeySequence(tr("Ctrl+d")));
+        accionDInformacion->setStatusTip("Obtener informacion basica");
+        accionDInformacion->setToolTip("Obtener informacion basica");
+        connect(accionDInformacion, SIGNAL(triggered()),
+                this, SLOT(slotDInformacion()));
+
+        menuFichero->addAction(accionDInformacion);
+        
+}
+/******************************************** CREAR ACCIONES ******************************************************/
 
 
 
-/***************************************************************************************************************/
+/******************************************************************************************************************/
 
-/******************************************** CREAR MENUS ******************************************************/
-
-
-/***************************************************************************************************************/
-
-/******************************************** METODOS **********************************************************/
+/********************************************* CREAR MENUS ********************************************************/
 
 
+/******************************************************************************************************************/
 
-/***************************************************************************************************************/
+/*********************************************** METODOS **********************************************************/
 
-/******************************************** EVENTOS **********************************************************/
+
+
+/******************************************************************************************************************/
+
+/*********************************************** EVENTOS **********************************************************/
 
 void MainWindow::paintEvent(QPaintEvent * evento){
         QPainter pintor(this);
@@ -58,15 +79,26 @@ void MainWindow::paintEvent(QPaintEvent * evento){
         for (int i = 0; i < bolas.size(); i++){
                 bolas.at(i)->pintar(pintor);
         }
+
+        bolaJugador->pintar(pintor);
        
         
 }
+
+void MainWindow::keyPressEvent(QKeyEvent * evento){
+
+        if (teclaPulsada == arriba){
+                bolaJugador->velY = bolaJugador->velY - 0.05;
+        }
         
-/**************************************************************************************************************/
+
+}
+        
+/*****************************************************************************************************************/
 
 
 
-/******************************************** SLOTS **********************************************************/
+/************************************************ SLOTS **********************************************************/
 
 void MainWindow::slotRepintar(){
         for (int i = 0; i < bolas.size(); i++){
@@ -82,12 +114,24 @@ void MainWindow::slotRepintar(){
                 
         }
         
+        bolaJugador->moverBola(width(), height());
 
         update();
 }
 
 void MainWindow::slotDInformacion(){
+        if (dInformacion == NULL){
+                dInformacion = new DInformacion(
+                        bolas.size(),
+                        0/*width()*/,
+                        0/*height()*/
+
+                );
+        }
         
+        dInformacion->establecerTamanyo(width(), height());
+
+        dInformacion->show();
 }
 
-/*************************************************************************************************************/
+/*****************************************************************************************************************/
