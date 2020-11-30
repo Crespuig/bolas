@@ -13,6 +13,7 @@ class DInformacion : public QDialog{
         QLabel * etTituloTamanyo;
         QLabel * etValorNumero;
         QLabel * etValorTamanyo;
+        
 
 
 };

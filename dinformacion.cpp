@@ -3,5 +3,6 @@
 DInformacion::DInformacion(QWidget * parent) : QDialog(parent){
 
     
+    
 
 }
