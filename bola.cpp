@@ -3,16 +3,21 @@
 #include <QPainter>
 #include <QBrush>
 #include <QColor>
+#include <QDebug>
 
+int Bola::vidaInicial;
 
 Bola::Bola(float posicionX, float posicionY, float velX, float velY){
     this->posicionX = posicionX;
     this->posicionY = posicionY;
     this->velX = velX;
     this->velY = velY;
+    vida = vidaInicial;
 }
 
-Bola::Bola(){}
+Bola::Bola(){
+        
+}
 
 void Bola::moverBola(int ancho, int alto){
         //seccion de deteccion de colision contra los bordes
@@ -42,6 +47,18 @@ void Bola::pintar(QPainter &pintor){
         QBrush brush(color);
         pintor.setBrush(brush);
         pintor.drawEllipse(posicionX, posicionY, diametro, diametro);
+
+        int ancho = diametro;
+        float anchoVerde = (((float)vida) / vidaInicial) * (float)ancho;
+        float anchoRojo = (ancho - (float)anchoVerde);
+        pintor.setBrush(Qt::green);
+        pintor.drawRect(posicionX, posicionY, anchoVerde, 3);
+        pintor.setBrush(Qt::red);
+        pintor.drawRect(posicionX + anchoVerde, posicionY, anchoRojo, 3);
+
+        pintor.drawText(posicionX - 10, 
+                        posicionY - 20, 
+                        QString("Vidas ") + QString::number(vida));
 }
 
 

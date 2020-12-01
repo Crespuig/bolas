@@ -15,6 +15,12 @@ public:
     float posicionY;
     float velX;
     float velY;
+    
+    int vida;
+    static int vidaInicial;
+    float anchoVerde;
+    float anchoRojo;
+
     QColor color = QColor(random()%256, random()%256, random()%256);
      
     static const int diametro = 50;

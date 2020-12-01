@@ -7,6 +7,7 @@
 #include "bola.h"
 #include <QVector>
 #include "dinformacion.h"
+#include <QKeyEvent>
 
 
 class MainWindow : public QMainWindow{
@@ -16,8 +17,13 @@ public:
     MainWindow(QWidget *parent = NULL);
 
     void paintEvent(QPaintEvent *event);
+    void keyPressEvent(QKeyEvent * evento);
+    void mousePressEvent(QMouseEvent *eveneto);
 
     Bola bola;
+
+    float initialClickX;
+    float initialClickY;
 
     QTimer *temporizador;
     QVector <Bola*> bolas;
