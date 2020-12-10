@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         inicializarBolas();
         incializarMenus();
         dInformacion = NULL;
+        dInfoBolas = NULL;
 
 }
 
@@ -46,7 +47,6 @@ void MainWindow::inicializarBolas(){
 void MainWindow::incializarMenus(){
         
         QMenu * menuFichero = menuBar()->addMenu("Fichero");
-        
         accionDInformacion = new QAction("Informacion basica", this);
         //accionDInformacion->setIcon(QIcon("./images/buscar.jpg"));
         //accionDInformacion->setShortcut(QKeySequence(tr("Ctrl+d")));
@@ -54,8 +54,17 @@ void MainWindow::incializarMenus(){
         accionDInformacion->setToolTip("Obtener informacion basica");
         connect(accionDInformacion, SIGNAL(triggered()),
                 this, SLOT(slotDInformacion()));
-
         menuFichero->addAction(accionDInformacion);
+
+        QMenu * menuInfoBolas = menuBar()->addMenu("Info bolas");
+        accionDInfoBolas = new QAction("Informacion bolas", this);
+        //accionDInformacion->setIcon(QIcon("./images/buscar.jpg"));
+        //accionDInformacion->setShortcut(QKeySequence(tr("Ctrl+d")));
+        accionDInfoBolas->setStatusTip("Obtener informacion bolas");
+        accionDInfoBolas->setToolTip("Obtener informacion bolas");
+        connect(accionDInfoBolas, SIGNAL(triggered()),
+                this, SLOT(slotDInfoBolas()));
+        menuInfoBolas->addAction(accionDInfoBolas);
         
 }
 /******************************************** CREAR ACCIONES ******************************************************/
@@ -110,11 +119,14 @@ void MainWindow::keyPressEvent(QKeyEvent * evento){
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *evento){
-        initialClickX=evento->x();
-        initialClickY=evento->y();
+        initialMouseClickX=evento->x();
+        initialMouseClickY=evento->y();
+}
 
-        Bola * nuevaBola()
-        bolas.append(Bola)
+void MainWindow::mouseReleaseEvent(QMouseEvent *evento){
+        bolas.append(new Bola(initialMouseClickX, initialMouseClickY,
+        (float)(evento->x() - initialMouseClickX) / width() * 10,
+        (float)(evento->y() - initialMouseClickY) / height() * 10));
 }
         
 /*****************************************************************************************************************/
@@ -165,6 +177,14 @@ void MainWindow::slotDInformacion(){
         dInformacion->establecerTamanyo(width(), height());
 
         dInformacion->show();
+}
+
+void MainWindow::slotDInfoBolas(){
+        if (dInfoBolas == NULL){
+                dInfoBolas = new DInfoBolas(&bolas);
+        }
+        
+        dInfoBolas->show();
 }
 
 /*****************************************************************************************************************/

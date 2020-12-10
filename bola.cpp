@@ -19,6 +19,8 @@ Bola::Bola(){
         
 }
 
+
+
 void Bola::moverBola(int ancho, int alto){
         //seccion de deteccion de colision contra los bordes
         if (posicionX >= ancho - diametro){
@@ -56,9 +58,9 @@ void Bola::pintar(QPainter &pintor){
         pintor.setBrush(Qt::red);
         pintor.drawRect(posicionX + anchoVerde, posicionY, anchoRojo, 3);
 
-        pintor.drawText(posicionX - 10, 
+        /*pintor.drawText(posicionX - 10, 
                         posicionY - 20, 
-                        QString("Vidas ") + QString::number(vida));
+                        QString("Vidas ") + QString::number(vida));*/
 }
 
 

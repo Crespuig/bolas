@@ -7,6 +7,7 @@
 #include "bola.h"
 #include <QVector>
 #include "dinformacion.h"
+#include "dinfobolas.h"
 #include <QKeyEvent>
 
 
@@ -18,12 +19,13 @@ public:
 
     void paintEvent(QPaintEvent *event);
     void keyPressEvent(QKeyEvent * evento);
-    void mousePressEvent(QMouseEvent *eveneto);
+    void mousePressEvent(QMouseEvent *evento);
+    void mouseReleaseEvent(QMouseEvent * evento);
 
     Bola bola;
 
-    float initialClickX;
-    float initialClickY;
+    float initialMouseClickX;
+    float initialMouseClickY;
 
     QTimer *temporizador;
     QVector <Bola*> bolas;
@@ -34,11 +36,14 @@ public:
     void incializarMenus();
 
     DInformacion * dInformacion;
+    DInfoBolas * dInfoBolas;
     QAction * accionDInformacion;
+    QAction * accionDInfoBolas;
 
 public slots:
     void slotRepintar();
     void slotDInformacion();
+    void slotDInfoBolas();
 
 };
 
