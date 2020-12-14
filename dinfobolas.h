@@ -9,7 +9,7 @@
 #include <QString>
 #include <QTimer>
 
-class DInfoBolas : public QDialog, Ui::DInfoBolas{
+class DInfoBolas : public QDialog, public Ui::DInfoBolas{
     Q_OBJECT
     public:
         DInfoBolas(QVector<Bola*> *bolas, QWidget * parent = nullptr);

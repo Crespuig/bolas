@@ -8,6 +8,7 @@
 #include <QVector>
 #include "dinformacion.h"
 #include "dinfobolas.h"
+#include "dtablabolas.h"
 #include <QKeyEvent>
 
 
@@ -37,13 +38,16 @@ public:
 
     DInformacion * dInformacion;
     DInfoBolas * dInfoBolas;
+    DTablaBolas * dTablaBolas;
     QAction * accionDInformacion;
     QAction * accionDInfoBolas;
+    QAction * accionDTablaBolas;
 
 public slots:
     void slotRepintar();
     void slotDInformacion();
     void slotDInfoBolas();
+    void slotDTablaBolas();
 
 };
 

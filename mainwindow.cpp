@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         incializarMenus();
         dInformacion = NULL;
         dInfoBolas = NULL;
+        dTablaBolas = NULL;
 
 }
 
@@ -65,6 +66,16 @@ void MainWindow::incializarMenus(){
         connect(accionDInfoBolas, SIGNAL(triggered()),
                 this, SLOT(slotDInfoBolas()));
         menuInfoBolas->addAction(accionDInfoBolas);
+
+        QMenu * menuTablaBolas = menuBar()->addMenu("Tabla bolas");
+        accionDTablaBolas = new QAction("Informacion bolas", this);
+        //accionDInformacion->setIcon(QIcon("./images/buscar.jpg"));
+        //accionDInformacion->setShortcut(QKeySequence(tr("Ctrl+d")));
+        accionDTablaBolas->setStatusTip("Obtener informacion tabla bolas");
+        accionDTablaBolas->setToolTip("Obtener informacion bolas");
+        connect(accionDTablaBolas, SIGNAL(triggered()),
+                this, SLOT(slotDTablaBolas()));
+        menuTablaBolas->addAction(accionDTablaBolas);
         
 }
 /******************************************** CREAR ACCIONES ******************************************************/
@@ -182,10 +193,19 @@ void MainWindow::slotDInformacion(){
 void MainWindow::slotDInfoBolas(){
         if (dInfoBolas == NULL){
                 dInfoBolas = new DInfoBolas(&bolas);
-                
+
         }
         
         dInfoBolas->show();
+}
+
+void MainWindow::slotDTablaBolas(){
+        if (dTablaBolas == NULL){
+                dTablaBolas = new DTablaBolas(&bolas);
+                
+        }
+        
+        dTablaBolas->show();
 }
 
 /*****************************************************************************************************************/
