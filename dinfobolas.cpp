@@ -18,10 +18,10 @@ DInfoBolas::DInfoBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent
 }
 
 QString DInfoBolas::getInformacionBolas(Bola *bola){
-    QString info = "Pos x: " + QString::number(bola->posicionX) + ","
-                    "Pos y: " + QString::number(bola->posicionY) + ","
-                    "Vel x: " + QString::number(bola->velX) + ","
-                    "Vel y: " + QString::number(bola->velY) + ",";
+    QString info = " Pos x: " + QString::number(bola->posicionX) + ","
+                    " Pos y: " + QString::number(bola->posicionY) + ","
+                    " Vel x: " + QString::number(bola->velX) + ","
+                    " Vel y: " + QString::number(bola->velY) + ",";
 
     return info;
 }

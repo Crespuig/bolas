@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <QAbstractTableModel>
 
+
 class DTablaBolas : public QDialog, public Ui::DTablaBolas{
     Q_OBJECT
     public:
@@ -23,10 +24,16 @@ class DTablaBolas : public QDialog, public Ui::DTablaBolas{
 
 class ModeloBolas : public QAbstractTableModel{
     public:
+        ModeloBolas(QVector<Bola*> *lasBolas, QObject * parent = nullptr);
+
+        QVector<Bola*> *vector;
+        QString getInformacionBolas(Bola *bola);
+
         int rowCount(const QModelIndex &parent = QModelIndex()) const;
         int columnCount(const QModelIndex &parent = QModelIndex()) const;
 
         QVariant data(const QModelIndex &index, int role = Qt::DisplayRole)const;
+        QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole)const;
 };
 
 #endif
