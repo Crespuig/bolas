@@ -16,13 +16,13 @@ class DTablaBolas : public QDialog, public Ui::DTablaBolas{
     public:
         DTablaBolas(QVector<Bola*> *bolas, QWidget * parent = nullptr);
 
-
-    public slots:
-          
+        QTimer * temporizador;
+    
 
 };
 
 class ModeloBolas : public QAbstractTableModel{
+    Q_OBJECT
     public:
         ModeloBolas(QVector<Bola*> *lasBolas, QObject * parent = nullptr);
 
@@ -34,6 +34,10 @@ class ModeloBolas : public QAbstractTableModel{
 
         QVariant data(const QModelIndex &index, int role = Qt::DisplayRole)const;
         QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole)const;
+
+        public slots:
+            void slotActualizarDatos();
+            void slotActualizarDatosTemp();
 };
 
 #endif

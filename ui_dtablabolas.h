@@ -14,6 +14,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
 
 QT_BEGIN_NAMESPACE
@@ -23,12 +24,13 @@ class Ui_DTablaBolas
 public:
     QDialogButtonBox *buttonBox;
     QTableView *tablaBolas;
+    QPushButton *botonActualizar;
 
     void setupUi(QDialog *DTablaBolas)
     {
         if (DTablaBolas->objectName().isEmpty())
             DTablaBolas->setObjectName(QString::fromUtf8("DTablaBolas"));
-        DTablaBolas->resize(505, 395);
+        DTablaBolas->resize(506, 395);
         buttonBox = new QDialogButtonBox(DTablaBolas);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
         buttonBox->setGeometry(QRect(140, 350, 341, 32));
@@ -36,7 +38,10 @@ public:
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tablaBolas = new QTableView(DTablaBolas);
         tablaBolas->setObjectName(QString::fromUtf8("tablaBolas"));
-        tablaBolas->setGeometry(QRect(20, 11, 461, 321));
+        tablaBolas->setGeometry(QRect(20, 11, 431, 321));
+        botonActualizar = new QPushButton(DTablaBolas);
+        botonActualizar->setObjectName(QString::fromUtf8("botonActualizar"));
+        botonActualizar->setGeometry(QRect(50, 350, 89, 25));
 
         retranslateUi(DTablaBolas);
         QObject::connect(buttonBox, SIGNAL(accepted()), DTablaBolas, SLOT(accept()));
@@ -48,6 +53,7 @@ public:
     void retranslateUi(QDialog *DTablaBolas)
     {
         DTablaBolas->setWindowTitle(QApplication::translate("DTablaBolas", "Dialog", nullptr));
+        botonActualizar->setText(QApplication::translate("DTablaBolas", "Actualizar", nullptr));
     } // retranslateUi
 
 };
