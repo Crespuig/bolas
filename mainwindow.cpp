@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dInformacion = NULL;
         dInfoBolas = NULL;
         dTablaBolas = NULL;
+        dControlBolas = NULL;
 
 }
 
@@ -76,6 +77,14 @@ void MainWindow::incializarMenus(){
         connect(accionDTablaBolas, SIGNAL(triggered()),
                 this, SLOT(slotDTablaBolas()));
         menuTablaBolas->addAction(accionDTablaBolas);
+
+        QMenu * menuControlBolas = menuBar()->addMenu("Control bolas");
+        accionDControlBolas = new QAction("Control bolas", this);
+        accionDControlBolas->setStatusTip("Control bolas");
+        accionDControlBolas->setToolTip("Control bolas");
+        connect(accionDControlBolas, SIGNAL(triggered()),
+                this, SLOT(slotDControlBolas()));
+        menuControlBolas->addAction(accionDControlBolas);
         
 }
 /******************************************** CREAR ACCIONES ******************************************************/
@@ -206,6 +215,15 @@ void MainWindow::slotDTablaBolas(){
         }
         
         dTablaBolas->show();
+}
+
+void MainWindow::slotDControlBolas(){
+        if (dControlBolas == NULL){
+                dControlBolas = new DControlBolas(&bolas);
+                
+        }
+        
+        dControlBolas->show();
 }
 
 /*****************************************************************************************************************/
