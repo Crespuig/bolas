@@ -35,7 +35,7 @@
      <x>10</x>
      <y>10</y>
      <width>541</width>
-     <height>341</height>
+     <height>311</height>
     </rect>
    </property>
    <widget class="QWidget" name="tab">
@@ -48,6 +48,32 @@
      <string>Tab 2</string>
     </attribute>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="botonPararBola">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>340</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Parar bola</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkTodas">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>340</y>
+     <width>92</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CheckBox</string>
+   </property>
   </widget>
  </widget>
  <resources/>

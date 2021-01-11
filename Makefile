@@ -397,6 +397,8 @@ compiler_moc_header_clean:
 moc_dcontrolbolas.cpp: dcontrolbolas.h \
 		bola.h \
 		ui_dcontrolbolas.h \
+		widgetbola.h \
+		ui_widgetbola.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/mati/Documents/interfaces/Qt/bolas/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mati/Documents/interfaces/Qt/bolas -I/home/mati/Documents/interfaces/Qt/bolas -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include dcontrolbolas.h -o moc_dcontrolbolas.cpp
@@ -424,6 +426,8 @@ moc_mainwindow.cpp: mainwindow.h \
 		ui_dtablabolas.h \
 		dcontrolbolas.h \
 		ui_dcontrolbolas.h \
+		widgetbola.h \
+		ui_widgetbola.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/mati/Documents/interfaces/Qt/bolas/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mati/Documents/interfaces/Qt/bolas -I/home/mati/Documents/interfaces/Qt/bolas -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
@@ -473,7 +477,9 @@ bola.o: bola.cpp bola.h
 
 dcontrolbolas.o: dcontrolbolas.cpp dcontrolbolas.h \
 		bola.h \
-		ui_dcontrolbolas.h
+		ui_dcontrolbolas.h \
+		widgetbola.h \
+		ui_widgetbola.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dcontrolbolas.o dcontrolbolas.cpp
 
 dinfobolas.o: dinfobolas.cpp dinfobolas.h \
@@ -497,7 +503,9 @@ main.o: main.cpp mainwindow.h \
 		dtablabolas.h \
 		ui_dtablabolas.h \
 		dcontrolbolas.h \
-		ui_dcontrolbolas.h
+		ui_dcontrolbolas.h \
+		widgetbola.h \
+		ui_widgetbola.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -508,7 +516,9 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		dtablabolas.h \
 		ui_dtablabolas.h \
 		dcontrolbolas.h \
-		ui_dcontrolbolas.h
+		ui_dcontrolbolas.h \
+		widgetbola.h \
+		ui_widgetbola.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 widgetbola.o: widgetbola.cpp widgetbola.h \

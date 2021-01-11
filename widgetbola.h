@@ -12,9 +12,11 @@
 class WidgetBola : public QWidget, public Ui::WidgetBola{
     Q_OBJECT
     public:
-    WidgetBola(QWidget * parent = nullptr);
+        WidgetBola(Bola *bola, QWidget * parent = nullptr);
+        Bola * miBola;
 
-    
+    public slots:
+        void slotBotonParar();
 
 };
 

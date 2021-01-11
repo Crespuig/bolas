@@ -11,8 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
 
@@ -25,6 +27,8 @@ public:
     QTabWidget *tabBolas;
     QWidget *tab;
     QWidget *tab_2;
+    QPushButton *botonPararBola;
+    QCheckBox *checkTodas;
 
     void setupUi(QDialog *DControlBolas)
     {
@@ -38,13 +42,19 @@ public:
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tabBolas = new QTabWidget(DControlBolas);
         tabBolas->setObjectName(QString::fromUtf8("tabBolas"));
-        tabBolas->setGeometry(QRect(10, 10, 541, 341));
+        tabBolas->setGeometry(QRect(10, 10, 541, 311));
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
         tabBolas->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
         tabBolas->addTab(tab_2, QString());
+        botonPararBola = new QPushButton(DControlBolas);
+        botonPararBola->setObjectName(QString::fromUtf8("botonPararBola"));
+        botonPararBola->setGeometry(QRect(10, 340, 89, 25));
+        checkTodas = new QCheckBox(DControlBolas);
+        checkTodas->setObjectName(QString::fromUtf8("checkTodas"));
+        checkTodas->setGeometry(QRect(160, 340, 92, 23));
 
         retranslateUi(DControlBolas);
         QObject::connect(buttonBox, SIGNAL(accepted()), DControlBolas, SLOT(accept()));
@@ -58,6 +68,8 @@ public:
         DControlBolas->setWindowTitle(QApplication::translate("DControlBolas", "Dialog", nullptr));
         tabBolas->setTabText(tabBolas->indexOf(tab), QApplication::translate("DControlBolas", "Tab 1", nullptr));
         tabBolas->setTabText(tabBolas->indexOf(tab_2), QApplication::translate("DControlBolas", "Tab 2", nullptr));
+        botonPararBola->setText(QApplication::translate("DControlBolas", "Parar bola", nullptr));
+        checkTodas->setText(QApplication::translate("DControlBolas", "CheckBox", nullptr));
     } // retranslateUi
 
 };
