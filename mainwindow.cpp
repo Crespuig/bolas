@@ -166,10 +166,18 @@ void MainWindow::slotRepintar(){
                                if(bolas.at(i)->choca(bolas.at(j))){
                                        bolas.at(i)->vida--;
                                        bolas.at(j)->vida--;
+                                       if (bolas.size() < 25){
+                                               int numeroRandom = random()%100;
+                                               if(numeroRandom < 25){
+                                                       bolas.append(new Bola(random()%width(),
+                                                        random()%height(),
+                                                        ((4 + random()%50 / 50.1) - 0.5),
+                                                        (4 + random()%50 / 50.1) - 0.5));
+                                               }       
+                                       }
                                }
                        }
                 }
-                
         }
         
         for (int i = 0; i < bolas.size(); i++){
