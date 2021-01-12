@@ -6,7 +6,7 @@
 #include "widgetbola.h"
 
 
-DControlBolas::DControlBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent){
+DControlBolas::DControlBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent), miVector(bolas){
     setupUi(this);
 
     tabBolas->clear();
@@ -33,4 +33,8 @@ void DControlBolas::slotBotonPararBola(){
         unWidgetBola->slotBotonParar();
     }
     
+}
+
+void DControlBolas::slotBolaNueva(Bola *nueva){
+    tabBolas->addTab(new WidgetBola(nueva), QString("Bola "));
 }

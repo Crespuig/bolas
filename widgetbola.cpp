@@ -13,16 +13,10 @@ WidgetBola::WidgetBola(Bola * bola, QWidget * parent) : QWidget(parent), miBola(
 
     connect(botonParar, SIGNAL(clicked()),
         this, SLOT(slotBotonParar()));
-
-    
-
-    
 }
 
 void WidgetBola::slotBotonParar(){
-    //parar la puta bola
     miBola->velX = 0;
     miBola->velY = 0;
-    //qDebug() << "Para la bola";
 }
 

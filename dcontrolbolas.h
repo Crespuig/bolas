@@ -14,9 +14,11 @@ class DControlBolas : public QDialog, public Ui::DControlBolas{
     Q_OBJECT
     public:
     DControlBolas(QVector<Bola *> * elVector, QWidget * parent = nullptr);
+    QVector <Bola *> * miVector;
 
     public slots:
         void slotBotonPararBola();
+        void slotBolaNueva(Bola *);
 
 };
 

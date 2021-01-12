@@ -53,6 +53,9 @@ public slots:
     void slotDTablaBolas();
     void slotDControlBolas();
 
+signals:
+    void senyalBolaNueva(Bola *);
+
 };
 
 

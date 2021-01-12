@@ -168,11 +168,14 @@ void MainWindow::slotRepintar(){
                                        bolas.at(j)->vida--;
                                        if (bolas.size() < 25){
                                                int numeroRandom = random()%100;
-                                               if(numeroRandom < 25){
-                                                       bolas.append(new Bola(random()%width(),
-                                                        random()%height(),
-                                                        ((4 + random()%50 / 50.1) - 0.5),
-                                                        (4 + random()%50 / 50.1) - 0.5));
+                                               if(numeroRandom < 18){
+                                                        Bola *nueva = new Bola(
+                                                                bolas.at(i)->posicionX+20,
+                                                                bolas.at(i)->posicionY-20,
+                                                                ((4 + random()%50 / 50.1) - 0.5),
+                                                                (4 + random()%50 / 50.1) - 0.5);
+                                                        bolas.append(nueva);
+                                                        emit senyalBolaNueva(nueva);
                                                }       
                                        }
                                }
@@ -229,6 +232,9 @@ void MainWindow::slotDControlBolas(){
         if (dControlBolas == NULL){
                 dControlBolas = new DControlBolas(&bolas);
                 
+                connect(this, SIGNAL(senyalBolaNueva(Bola *)),
+                dControlBolas, SLOT(slotBolaNueva(Bola *)));
+
         }
         
         dControlBolas->show();
