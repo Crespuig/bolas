@@ -37,8 +37,8 @@ void MainWindow::inicializarBolas(){
         for (int i = 0; i < 5; i++){
               bolas.append(new Bola(random()%width(),
                                 random()%height(),
-                                ((4 + random()%50 / 50.1) - 0.5),
-                                ((4 + random()%50 / 50.1) - 0.5)));
+                                ((4 + random()%50 / 50.1) - 0.05),
+                                ((4 + random()%50 / 50.1) - 0.05)));
         }
         
         bolaJugador = new Bola(100,100,0,0);
@@ -185,9 +185,9 @@ void MainWindow::slotRepintar(){
         
         for (int i = 0; i < bolas.size(); i++){
                 if(bolaJugador->choca(bolas.at(i))){
-                                       bolaJugador->vida--;
-                                       bolas.at(i)->vida--;
-                               }
+                        bolaJugador->vida--;
+                        bolas.at(i)->vida--;
+                }
         }
         bolaJugador->moverBola(width(), height());
         
