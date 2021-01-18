@@ -8,7 +8,7 @@
 #include <ui_darbolbolas.h>
 #include <QString>
 #include <QTimer>
-#include <QAbstractTableModel>
+#include <QAbstractItemModel>
 
 
 class DArbolBolas : public QDialog, public Ui::DArbolBolas{
@@ -19,6 +19,22 @@ class DArbolBolas : public QDialog, public Ui::DArbolBolas{
 
 };
 
+class ModeloArbol : public QAbstractItemModel{
+    Q_OBJECT
+    public:
+        int rowCount(const QModelIndex &parent = QModelIndex());
+        int columnCount(const QModelIndex &parent = QModelIndex());
+        
+        QVariant data(const QModelIndex &index, int role = Qt::DisplayRole);
+        
+        QMoldeIndex index(int row, int column, const QModelIndex &parent = QModelIndex());
+        
+        QModelIndex parent(const QModelIndex &index);
 
+        
+
+        public slots:
+           
+};
 
 #endif
