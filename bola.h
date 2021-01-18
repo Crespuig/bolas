@@ -3,6 +3,7 @@
 
 #include <QPainter>
 #include <QColor>
+#include <QVector>
 
 
 class Bola {
@@ -20,6 +21,9 @@ public:
     static int vidaInicial;
     float anchoVerde;
     float anchoRojo;
+
+    Bola * padre;
+    QVector<Bola*> hijas;
 
     QColor color = QColor(random()%256, random()%256, random()%256);
      

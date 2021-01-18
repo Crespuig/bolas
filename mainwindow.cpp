@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dInfoBolas = NULL;
         dTablaBolas = NULL;
         dControlBolas = NULL;
+        dArbolBolas = NULL;
 
 }
 
@@ -85,6 +86,14 @@ void MainWindow::incializarMenus(){
         connect(accionDControlBolas, SIGNAL(triggered()),
                 this, SLOT(slotDControlBolas()));
         menuControlBolas->addAction(accionDControlBolas);
+
+        QMenu * menuArbolBolas = menuBar()->addMenu("Arbol bolas");
+        accionDArbolBolas = new QAction("Arbol bolas", this);
+        accionDArbolBolas->setStatusTip("Arbol bolas");
+        accionDArbolBolas->setToolTip("Arbol bolas");
+        connect(accionDArbolBolas, SIGNAL(triggered()),
+                this, SLOT(slotDArbolBolas()));
+        menuArbolBolas->addAction(accionDArbolBolas);
         
 }
 /******************************************** CREAR ACCIONES ******************************************************/
@@ -174,6 +183,9 @@ void MainWindow::slotRepintar(){
                                                                 bolas.at(i)->posicionY-20,
                                                                 ((4 + random()%50 / 50.1) - 0.5),
                                                                 (4 + random()%50 / 50.1) - 0.5);
+                                                        nueva->padre = bolas.at(i);
+                                                        bolas.at(i)->hijas.append(nueva);
+                                                        
                                                         bolas.append(nueva);
                                                         emit senyalBolaNueva(nueva);
                                                }       
@@ -238,6 +250,17 @@ void MainWindow::slotDControlBolas(){
         }
         
         dControlBolas->show();
+}
+
+void MainWindow::slotDArbolBolas(){
+        if (dArbolBolas == NULL){
+                dArbolBolas = new DArbolBolas(&bolas);
+                
+                
+
+        }
+        
+        dArbolBolas->show();
 }
 
 /*****************************************************************************************************************/

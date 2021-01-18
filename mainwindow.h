@@ -10,6 +10,7 @@
 #include "dinfobolas.h"
 #include "dtablabolas.h"
 #include "dcontrolbolas.h"
+#include "darbolbolas.h"
 #include <QKeyEvent>
 
 
@@ -41,10 +42,14 @@ public:
     DInfoBolas * dInfoBolas;
     DTablaBolas * dTablaBolas;
     DControlBolas * dControlBolas;
+    DArbolBolas * dArbolBolas;
+    
     QAction * accionDInformacion;
     QAction * accionDInfoBolas;
     QAction * accionDTablaBolas;
     QAction * accionDControlBolas;
+    QAction * accionDArbolBolas;
+
 
 public slots:
     void slotRepintar();
@@ -52,6 +57,7 @@ public slots:
     void slotDInfoBolas();
     void slotDTablaBolas();
     void slotDControlBolas();
+    void slotDArbolBolas();
 
 signals:
     void senyalBolaNueva(Bola *);
