@@ -13,7 +13,7 @@ DArbolBolas::DArbolBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(pare
 }
 
 ModeloArbol::ModeloArbol(QVector<Bola*> *bolas){
-    
+
 }
 
 int ModeloArbol::rowCount(const QModelIndex &parent){
@@ -33,7 +33,7 @@ int ModeloArbol::rowCount(const QModelIndex &parent){
     }
 }
 
-int ModeloArbol:: columnCount(const QModelIndex &parent){
+int ModeloArbol::columnCount(const QModelIndex &parent){
     
     return 1;
     
@@ -51,13 +51,13 @@ QModelIndex ModeloArbol::index(int row, int column, const QModelIndex &parent){
 
     if (parent.isValid()){
         Bola * pPadre;
-        void * puntero = index.internalPointer();
+        void * puntero = parent.internalPointer();
         pPadre = static_cast<Bola *> (puntero); 
 
-        int nunmHija = row;
+        int numHija = row;
         Bola * hija = pPadre->hijas.at(numHija);
 
-        QModelIndex indiceDevuelto(row, column, hija);
+        QModelIndex indiceDevuelto = createIndex(row, column, hija);
         return indiceDevuelto;
     } else {
         
@@ -78,7 +78,7 @@ QModelIndex ModeloArbol::parent(const QModelIndex &index){
         return QModelIndex();
     }
     
-    QModelIndex indiceDevuelto(0, 0, pHija->padre);
+    QModelIndex indiceDevuelto = createIndex(0, 0, pHija->padre);
     return indiceDevuelto;
 
 }

@@ -22,9 +22,8 @@ class DArbolBolas : public QDialog, public Ui::DArbolBolas{
 class ModeloArbol : public QAbstractItemModel{
     Q_OBJECT
     public:
-        QVector<Bola *> *bolas;
-
         ModeloArbol(QVector<Bola*> *bolas);
+        QVector<Bola *> *bolas;
 
         int rowCount(const QModelIndex &parent = QModelIndex());
         int columnCount(const QModelIndex &parent = QModelIndex());
