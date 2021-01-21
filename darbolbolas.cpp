@@ -12,11 +12,11 @@ DArbolBolas::DArbolBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(pare
     vistaArbol->setModel(m);
 }
 
-ModeloArbol::ModeloArbol(QVector<Bola*> *bolas){
-
+ModeloArbol::ModeloArbol(QVector<Bola*> *bolasPasadas){
+    bolas = bolasPasadas;
 }
 
-int ModeloArbol::rowCount(const QModelIndex &parent){
+int ModeloArbol::rowCount(const QModelIndex &parent)const{
     if (!parent.isValid()){ //nos preguntan por la bola raiz
         int bolasSinPadre = 0;
         for (int i = 0; i < bolas->size(); i++){
@@ -33,13 +33,13 @@ int ModeloArbol::rowCount(const QModelIndex &parent){
     }
 }
 
-int ModeloArbol::columnCount(const QModelIndex &parent){
+int ModeloArbol::columnCount(const QModelIndex &parent)const{
     
     return 1;
     
 }
         
-QVariant ModeloArbol::data(const QModelIndex &index, int role){
+QVariant ModeloArbol::data(const QModelIndex &index, int role)const{
     Bola * bolaPreguntada;
     void * puntero = index.internalPointer();
     bolaPreguntada = static_cast<Bola *> (puntero); 
@@ -47,7 +47,7 @@ QVariant ModeloArbol::data(const QModelIndex &index, int role){
     return QVariant(QString::number(bolaPreguntada->posicionX));
 }
         
-QModelIndex ModeloArbol::index(int row, int column, const QModelIndex &parent){
+QModelIndex ModeloArbol::index(int row, int column, const QModelIndex &parent)const{
 
     if (parent.isValid()){
         Bola * pPadre;
@@ -64,13 +64,10 @@ QModelIndex ModeloArbol::index(int row, int column, const QModelIndex &parent){
         for (int i = 0; i < bolas->size(); i++){
             
         }
-        
-        
-
     }
 }
         
-QModelIndex ModeloArbol::parent(const QModelIndex &index){
+QModelIndex ModeloArbol::parent(const QModelIndex &index)const{
 
     Bola * pHija = static_cast<Bola *>(index.internalPointer());
 

@@ -25,14 +25,14 @@ class ModeloArbol : public QAbstractItemModel{
         ModeloArbol(QVector<Bola*> *bolas);
         QVector<Bola *> *bolas;
 
-        int rowCount(const QModelIndex &parent = QModelIndex());
-        int columnCount(const QModelIndex &parent = QModelIndex());
+        int rowCount(const QModelIndex &parent = QModelIndex())const;
+        int columnCount(const QModelIndex &parent = QModelIndex())const;
         
-        QVariant data(const QModelIndex &index, int role = Qt::DisplayRole);
+        QVariant data(const QModelIndex &index, int role = Qt::DisplayRole)const;
         
-        QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex());
+        QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex())const;
         
-        QModelIndex parent(const QModelIndex &index);
+        QModelIndex parent(const QModelIndex &index)const;
 
         
 
