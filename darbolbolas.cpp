@@ -3,6 +3,7 @@
 #include <QString>
 #include <QColor>
 #include <QVariant>
+#include <QDebug>
 
 
 DArbolBolas::DArbolBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent){
@@ -17,6 +18,7 @@ ModeloArbol::ModeloArbol(QVector<Bola*> *bolasPasadas){
 }
 
 int ModeloArbol::rowCount(const QModelIndex &parent)const{
+    //qDebug ("row");
     if (!parent.isValid()){ //nos preguntan por la bola raiz
         int bolasSinPadre = 0;
         for (int i = 0; i < bolas->size(); i++){
@@ -34,44 +36,68 @@ int ModeloArbol::rowCount(const QModelIndex &parent)const{
 }
 
 int ModeloArbol::columnCount(const QModelIndex &parent)const{
-    
-    return 1;
+    //qDebug ("column");
+    return 2;
     
 }
         
 QVariant ModeloArbol::data(const QModelIndex &index, int role)const{
+    //qDebug ("inici data");
     Bola * bolaPreguntada;
+    
     void * puntero = index.internalPointer();
     bolaPreguntada = static_cast<Bola *> (puntero); 
-
-    return QVariant(QString::number(bolaPreguntada->posicionX));
+    /*if (bolaPreguntada == NULL)
+        {
+            qDebug()<<"Error";
+        }*/
+    if (role == Qt::DecorationRole){
+        return QVariant((bolaPreguntada->color));
+    }
+    
+    if (role == Qt::DisplayRole){
+        return QVariant(QString::number(bolaPreguntada->posicionX));
+    }
+    return QVariant();
 }
         
-QModelIndex ModeloArbol::index(int row, int column, const QModelIndex &parent)const{
-
+QModelIndex ModeloArbol::index(int numHija, int column, const QModelIndex &parent)const{
+    //qDebug ("inici index");
     if (parent.isValid()){
         Bola * pPadre;
         void * puntero = parent.internalPointer();
         pPadre = static_cast<Bola *> (puntero); 
 
-        int numHija = row;
         Bola * hija = pPadre->hijas.at(numHija);
 
-        QModelIndex indiceDevuelto = createIndex(row, column, hija);
+        QModelIndex indiceDevuelto = createIndex(numHija, column, hija);
+        /*if (pPadre == NULL)
+        {
+            qDebug()<<"Error";
+        }*/
+        
         return indiceDevuelto;
     } else {
-        
+        int locaEncontrada = -1;
         for (int i = 0; i < bolas->size(); i++){
-            
+            if(bolas->at(i)->padre == NULL){
+                locaEncontrada++;  
+            }
+            if (locaEncontrada == numHija){
+                qDebug ("encontrado index");
+                return createIndex(numHija, column, bolas->at(i));
+                
+            }
         }
     }
+    //qDebug()<<"Final index";
 }
         
 QModelIndex ModeloArbol::parent(const QModelIndex &index)const{
-
+    //qDebug ("parent");
     Bola * pHija = static_cast<Bola *>(index.internalPointer());
-
-    if (pHija == NULL){
+    
+    if (pHija->padre == NULL){
         return QModelIndex();
     }
     
