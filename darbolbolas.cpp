@@ -84,7 +84,7 @@ QModelIndex ModeloArbol::index(int numHija, int column, const QModelIndex &paren
                 locaEncontrada++;  
             }
             if (locaEncontrada == numHija){
-                qDebug ("encontrado index");
+                //qDebug ("encontrado index");
                 return createIndex(numHija, column, bolas->at(i));
                 
             }

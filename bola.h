@@ -4,7 +4,7 @@
 #include <QPainter>
 #include <QColor>
 #include <QVector>
-
+#include <QImage>
 
 class Bola {
 
@@ -16,6 +16,9 @@ public:
     float posicionY;
     float velX;
     float velY;
+
+    QImage imagen;
+    bool mostrarImagen;
     
     int vida;
     static int vidaInicial;

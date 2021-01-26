@@ -13,6 +13,9 @@ WidgetBola::WidgetBola(Bola * bola, QWidget * parent) : QWidget(parent), miBola(
 
     connect(botonParar, SIGNAL(clicked()),
         this, SLOT(slotBotonParar()));
+
+    setAcceptDrops(true);
+
 }
 
 void WidgetBola::slotBotonParar(){

@@ -4,21 +4,28 @@
 #include <QBrush>
 #include <QColor>
 #include <QDebug>
+#include <QImage>
 
 int Bola::vidaInicial;
 
 Bola::Bola(float posicionX, float posicionY, float velX, float velY){
-    this->posicionX = posicionX;
-    this->posicionY = posicionY;
-    this->velX = velX;
-    this->velY = velY;
-    vida = vidaInicial;
+        this->posicionX = posicionX;
+        this->posicionY = posicionY;
+        this->velX = velX;
+        this->velY = velY;
+        vida = vidaInicial;
 
-    padre = NULL;
+        padre = NULL;
+        imagen = QImage("./png/abrupt-boy-face.png");
+        imagen = imagen.scaled(Bola::diametro, Bola::diametro);
+        mostrarImagen = true;
 }
 
 Bola::Bola(){
         padre =NULL;
+        imagen = QImage("./png/abrupt-boy-face.png");
+        imagen = imagen.scaled(Bola::diametro, Bola::diametro);
+        mostrarImagen = true;
 }
 
 
@@ -48,9 +55,9 @@ void Bola::moverBola(int ancho, int alto){
 }
 
 void Bola::pintar(QPainter &pintor){
-        QBrush brush(color);
+        /*QBrush brush(color);
         pintor.setBrush(brush);
-        pintor.drawEllipse(posicionX, posicionY, diametro, diametro);
+        pintor.drawEllipse(posicionX, posicionY, diametro, diametro);*/
 
         int ancho = diametro;
         float anchoVerde = (((float)vida) / vidaInicial) * (float)ancho;
@@ -63,6 +70,13 @@ void Bola::pintar(QPainter &pintor){
         if (vida < 0){
                 vida = 0;
         }
+
+        if (mostrarImagen){
+                pintor.drawImage(posicionX,posicionY,imagen);
+        } else {
+                pintor.drawEllipse(posicionX,posicionY,Bola::diametro,Bola::diametro);
+        }
+        
         
 
         /*pintor.drawText(posicionX - 10, 
