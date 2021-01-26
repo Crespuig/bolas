@@ -180,7 +180,7 @@ void MainWindow::performDrag(){
 
         QDrag *drag = new QDrag(this);
         drag->setMimeData(mimeData);
-        drag->setPixmap(QPixmap(":/images/person.png"));
+        drag->setPixmap(QPixmap("./png/abrupt-boy-face.png"));
         drag->exec(Qt::MoveAction) ;
 }
 
