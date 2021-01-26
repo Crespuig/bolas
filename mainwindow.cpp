@@ -165,7 +165,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event){
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event){
-        if (event->buttons() & Qt::LeftButton) {
+        if (event->button() & Qt::LeftButton) {
                 int distance = (event->pos() - startPos).manhattanLength();
                 if (distance >= QApplication::startDragDistance())
                 performDrag();
