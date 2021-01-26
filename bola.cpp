@@ -136,3 +136,5 @@ bool Bola::choca(Bola * otra){
         
         return rebote;
 }
+
+

@@ -8,6 +8,9 @@
 #include <QMenuBar>
 #include <QMenu>
 #include <QKeyEvent>
+#include <QDragEnterEvent>
+#include <QMimeData>
+#include <QDrag>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
@@ -147,10 +150,40 @@ void MainWindow::keyPressEvent(QKeyEvent * evento){
 
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *evento){
-        initialMouseClickX=evento->x();
-        initialMouseClickY=evento->y();
+void MainWindow::mousePressEvent(QMouseEvent *event){
+                
+        if (event->button() == Qt::LeftButton){
+                startPos = event->pos();
+        }
+        QMainWindow::mousePressEvent(event);
+
+        if (event->button() == Qt::RightButton){
+                initialMouseClickX=event->x();
+                initialMouseClickY=event->y();
+        }
+        
 }
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event){
+        if (event->buttons() & Qt::LeftButton) {
+                int distance = (event->pos() - startPos).manhattanLength();
+                if (distance >= QApplication::startDragDistance())
+                performDrag();
+        }
+        QMainWindow::mouseMoveEvent(event);
+}
+
+void MainWindow::performDrag(){
+
+        QMimeData *mimeData = new QMimeData;
+        mimeData->setText(QString("hola"));
+
+        QDrag *drag = new QDrag(this);
+        drag->setMimeData(mimeData);
+        drag->setPixmap(QPixmap(":/images/person.png"));
+        drag->exec(Qt::MoveAction) ;
+}
+
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *evento){
         bolas.append(new Bola(initialMouseClickX, initialMouseClickY,

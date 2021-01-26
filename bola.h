@@ -35,6 +35,7 @@ public:
     void moverBola(int ancho, int alto); //anchura y altura del area de juego
     void pintar(QPainter &pintor);
     bool choca(Bola * otra);
+    void ponImagen(QImage&);
 
 };
 

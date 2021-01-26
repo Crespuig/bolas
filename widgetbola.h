@@ -15,6 +15,9 @@ class WidgetBola : public QWidget, public Ui::WidgetBola{
         WidgetBola(Bola *bola, QWidget * parent = nullptr);
         Bola * miBola;
 
+        void dragEnterEvent(QDragEnterEvent*);
+        void dropEvent(QDropEvent * event);
+
     public slots:
         void slotBotonParar();
 

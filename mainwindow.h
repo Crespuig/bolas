@@ -24,6 +24,8 @@ public:
     void keyPressEvent(QKeyEvent * evento);
     void mousePressEvent(QMouseEvent *evento);
     void mouseReleaseEvent(QMouseEvent * evento);
+    void mouseMoveEvent(QMouseEvent *event);
+
 
     Bola bola;
 
@@ -49,6 +51,11 @@ public:
     QAction * accionDTablaBolas;
     QAction * accionDControlBolas;
     QAction * accionDArbolBolas;
+
+private:
+    void performDrag();
+    QPoint startPos;
+
 
 
 public slots:
