@@ -55,9 +55,9 @@ void Bola::moverBola(int ancho, int alto){
 }
 
 void Bola::pintar(QPainter &pintor){
-        /*QBrush brush(color);
+        QBrush brush(color);
         pintor.setBrush(brush);
-        pintor.drawEllipse(posicionX, posicionY, diametro, diametro);*/
+        pintor.drawEllipse(posicionX, posicionY, diametro, diametro);
 
         int ancho = diametro;
         float anchoVerde = (((float)vida) / vidaInicial) * (float)ancho;

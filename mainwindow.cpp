@@ -324,7 +324,7 @@ void MainWindow::slotDArbolBolas(){
 
 void MainWindow::slotChocar(){
 
-        if(tryIcon == NULL) return;
+        if(trayIcon == NULL) return;
 
         trayIcon->showMessage(QString("hayyyyy choooooqueeee"),
                         QString("Juega mejor! que te van a matar"),
