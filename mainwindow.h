@@ -13,7 +13,7 @@
 #include "darbolbolas.h"
 #include <QKeyEvent>
 #include <QDrag>
-
+#include <QSystemTrayIcon>
 
 class MainWindow : public QMainWindow{
 Q_OBJECT
@@ -38,6 +38,7 @@ public:
     //QMenu * menuPartidasGuardadas;
     Bola * bolaJugador;
     QDrag *drag;
+    QSystemTrayIcon *trayIcon;
 
     void inicializarBolas();
     void incializarMenus();
@@ -67,9 +68,11 @@ public slots:
     void slotDTablaBolas();
     void slotDControlBolas();
     void slotDArbolBolas();
+    void slotChocar();
 
 signals:
     void senyalBolaNueva(Bola *);
+    void jugadorChoqued();
 
 };
 

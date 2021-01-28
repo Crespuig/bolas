@@ -11,6 +11,7 @@
 #include <QDragEnterEvent>
 #include <QMimeData>
 #include <QDrag>
+#include <QSystemTrayIcon>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
@@ -35,6 +36,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dControlBolas = NULL;
         dArbolBolas = NULL;
         drag = NULL;
+
+        if ( QSystemTrayIcon::isSystemTrayAvailable()  == true ) {
+                trayIcon = new QSystemTrayIcon(this);
+                /*trayIcon->setContextMenu(menuDialogos);*/
+                trayIcon->setIcon(QIcon("./png/bolaIcono.jpg"));
+                trayIcon->show();
+                connect(this,SIGNAL(jugadorChoqued()),this,SLOT(slotChocar()));    
+        }
+
 
 }
 
@@ -240,6 +250,7 @@ void MainWindow::slotRepintar(){
                 if(bolaJugador->choca(bolas.at(i))){
                         bolaJugador->vida--;
                         bolas.at(i)->vida--;
+                        emit jugadorChoqued();
                 }
         }
         bolaJugador->moverBola(width(), height());
@@ -303,5 +314,14 @@ void MainWindow::slotDArbolBolas(){
         
         dArbolBolas->show();
 }
+
+void MainWindow::slotChocar(){
+
+    trayIcon->showMessage(QString("hayyyyy choooooqueeee"),
+                        QString("Juega mejor! que te van a matar"),
+                        QSystemTrayIcon::Information, 1000);
+
+}
+
 
 /*****************************************************************************************************************/
