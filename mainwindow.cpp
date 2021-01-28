@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dControlBolas = NULL;
         dArbolBolas = NULL;
         drag = NULL;
+        trayIcon = NULL;
 
         if ( QSystemTrayIcon::isSystemTrayAvailable()  == true ) {
                 trayIcon = new QSystemTrayIcon(this);
