@@ -37,10 +37,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dArbolBolas = NULL;
         drag = NULL;
         trayIcon = NULL;
+        menuContextual = NULL;
 
         if ( QSystemTrayIcon::isSystemTrayAvailable()  == true ) {
                 trayIcon = new QSystemTrayIcon(this);
-                /*trayIcon->setContextMenu(menuDialogos);*/
+                trayIcon->setContextMenu(menuContextual);
                 trayIcon->setIcon(QIcon("./png/bolaIcono.jpg"));
                 trayIcon->show();
                 connect(this,SIGNAL(jugadorChoqued()),this,SLOT(slotChocar()));    
@@ -109,6 +110,11 @@ void MainWindow::incializarMenus(){
         connect(accionDArbolBolas, SIGNAL(triggered()),
                 this, SLOT(slotDArbolBolas()));
         menuArbolBolas->addAction(accionDArbolBolas);
+
+        menuContextual = new QMenu("contexttual");
+        menuContextual->addAction(accionDInformacion);
+        menuContextual->addAction(accionDInfoBolas);
+        menuContextual->addAction(accionDTablaBolas);
         
 }
 /******************************************** CREAR ACCIONES ******************************************************/
@@ -318,7 +324,9 @@ void MainWindow::slotDArbolBolas(){
 
 void MainWindow::slotChocar(){
 
-    trayIcon->showMessage(QString("hayyyyy choooooqueeee"),
+        if(tryIcon == NULL) return;
+
+        trayIcon->showMessage(QString("hayyyyy choooooqueeee"),
                         QString("Juega mejor! que te van a matar"),
                         QSystemTrayIcon::Information, 1000);
 

@@ -43,6 +43,8 @@ public:
     void inicializarBolas();
     void incializarMenus();
 
+    QMenu * menuContextual;
+
     DInformacion * dInformacion;
     DInfoBolas * dInfoBolas;
     DTablaBolas * dTablaBolas;
