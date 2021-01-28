@@ -115,6 +115,11 @@ void MainWindow::incializarMenus(){
         menuContextual->addAction(accionDInformacion);
         menuContextual->addAction(accionDInfoBolas);
         menuContextual->addAction(accionDTablaBolas);
+
+        this->setContextMenuPolicy(Qt::ActionsContextMenu);
+        this->addAction(accionDInformacion);
+        this->addAction(accionDInfoBolas);
+        this->addAction(accionDTablaBolas);
         
 }
 /******************************************** CREAR ACCIONES ******************************************************/
@@ -169,11 +174,15 @@ void MainWindow::keyPressEvent(QKeyEvent * evento){
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event){
-
+        
         initialMouseClickX=event->x();
         initialMouseClickY=event->y();
 
         drag = NULL;
+
+        /*if (event->buttons() & Qt::RightButton){
+                QManinWindow::mousePressEvent(event);
+        }*/
                 
 }
 
