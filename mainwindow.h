@@ -12,6 +12,7 @@
 #include "dcontrolbolas.h"
 #include "darbolbolas.h"
 #include <QKeyEvent>
+#include <QDrag>
 
 
 class MainWindow : public QMainWindow{
@@ -36,6 +37,7 @@ public:
     QVector <Bola*> bolas;
     //QMenu * menuPartidasGuardadas;
     Bola * bolaJugador;
+    QDrag *drag;
 
     void inicializarBolas();
     void incializarMenus();

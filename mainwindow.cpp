@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dTablaBolas = NULL;
         dControlBolas = NULL;
         dArbolBolas = NULL;
+        drag = NULL;
 
 }
 
@@ -151,26 +152,37 @@ void MainWindow::keyPressEvent(QKeyEvent * evento){
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event){
-                
-        if (event->button() == Qt::LeftButton){
-                startPos = event->pos();
-        }
-        QMainWindow::mousePressEvent(event);
 
-        if (event->button() == Qt::RightButton){
-                initialMouseClickX=event->x();
-                initialMouseClickY=event->y();
-        }
-        
+        initialMouseClickX=event->x();
+        initialMouseClickY=event->y();
+
+        drag = NULL;
+                
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *evento){
+        bolas.append(new Bola(initialMouseClickX, initialMouseClickY,
+        (float)(evento->x() - initialMouseClickX) / width() * 10,
+        (float)(evento->y() - initialMouseClickY) / height() * 10));
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event){
-        if (event->button() & Qt::LeftButton) {
-                int distance = (event->pos() - startPos).manhattanLength();
-                if (distance >= QApplication::startDragDistance())
-                performDrag();
+        QPoint posInicial(initialMouseClickX, initialMouseClickY);
+        QPoint posFinal = event->pos();
+        int distance = (posFinal -posInicial).manhattanLength();
+        if (distance > QApplication::startDragDistance()) return;
+
+        
+        if (drag == NULL){
+                QMimeData *mimeData = new QMimeData;
+                QPixmap pixmap(size());
+                this->render(&pixmap);
+                mimeData->setImageData(pixmap);
+
+                drag = new QDrag(this);
+                drag->setMimeData(mimeData);
+                drag->exec(Qt::MoveAction);
         }
-        QMainWindow::mouseMoveEvent(event);
 }
 
 void MainWindow::performDrag(){
@@ -185,11 +197,7 @@ void MainWindow::performDrag(){
 }
 
 
-void MainWindow::mouseReleaseEvent(QMouseEvent *evento){
-        bolas.append(new Bola(initialMouseClickX, initialMouseClickY,
-        (float)(evento->x() - initialMouseClickX) / width() * 10,
-        (float)(evento->y() - initialMouseClickY) / height() * 10));
-}
+
         
 /*****************************************************************************************************************/
 
