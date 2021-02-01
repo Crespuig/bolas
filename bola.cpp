@@ -14,6 +14,8 @@ Bola::Bola(float posicionX, float posicionY, float velX, float velY){
         this->velX = velX;
         this->velY = velY;
         vida = vidaInicial;
+        //nombre
+        //numero
 
         padre = NULL;
         imagen = QImage("./png/abrupt-boy-face.png");

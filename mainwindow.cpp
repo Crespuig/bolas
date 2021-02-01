@@ -13,6 +13,11 @@
 #include <QDrag>
 #include <QSystemTrayIcon>
 
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         resize(800, 600);
@@ -110,6 +115,11 @@ void MainWindow::incializarMenus(){
         connect(accionDArbolBolas, SIGNAL(triggered()),
                 this, SLOT(slotDArbolBolas()));
         menuArbolBolas->addAction(accionDArbolBolas);
+
+        accionGuardarPartida = new QAction("Guardar partida", this);
+        connect(accionGuardarPartida, SIGNAL(triggered()),
+                this, SLOT(slotGuardarPartida()));
+        menuFichero->addAction(accionGuardarPartida);
 
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
@@ -324,8 +334,6 @@ void MainWindow::slotDArbolBolas(){
         if (dArbolBolas == NULL){
                 dArbolBolas = new DArbolBolas(&bolas);
                 
-                
-
         }
         
         dArbolBolas->show();
@@ -338,6 +346,36 @@ void MainWindow::slotChocar(){
         trayIcon->showMessage(QString("hayyyyy choooooqueeee"),
                         QString("Juega mejor! que te van a matar"),
                         QSystemTrayIcon::Information, 1000);
+
+}
+
+void MainWindow::slotGuardarPartida(){
+        QJsonObject jsonPrincipal;
+
+        QJsonObject jsonJugador;
+
+        jsonJugador["x"] = bolaJugador->posicionX;
+        jsonJugador["y"] = bolaJugador->posicionY;
+
+        jsonPrincipal["jugador"] = jsonJugador;
+
+        QJsonArray arrayBolas;
+        QJsonObject bolaJson;
+
+        for(Bola * b : bolas){
+                bolaJson["x"] = b->posicionX;
+                bolaJson["y"] =b->posicionY;
+                arrayBolas.append(bolaJson);
+        }
+
+        jsonPrincipal["bolas"] = arrayBolas;
+
+        //Siempre igual
+        QFile saveFile(QStringLiteral("save.json"));
+        saveFile.open(QIODevice::WriteOnly);
+        QJsonDocument saveDoc(jsonPrincipal);
+        saveFile.write(saveDoc.toJson());
+        saveFile.close();
 
 }
 
