@@ -57,6 +57,7 @@ public:
     QAction * accionDControlBolas;
     QAction * accionDArbolBolas;
     QAction * accionGuardarPartida;
+    QAction * accionCargarPartida;
 
 private:
     void performDrag();
@@ -73,6 +74,7 @@ public slots:
     void slotDArbolBolas();
     void slotChocar();
     void slotGuardarPartida();
+    void slotCargarPartida();
 
 signals:
     void senyalBolaNueva(Bola *);

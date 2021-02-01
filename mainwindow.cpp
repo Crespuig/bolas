@@ -121,6 +121,11 @@ void MainWindow::incializarMenus(){
                 this, SLOT(slotGuardarPartida()));
         menuFichero->addAction(accionGuardarPartida);
 
+        accionCargarPartida = new QAction("Guardar partida", this);
+        connect(accionCargarPartida, SIGNAL(triggered()),
+                this, SLOT(slotCargarPartida()));
+        menuFichero->addAction(accionCargarPartida);
+
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
         menuContextual->addAction(accionDInfoBolas);
@@ -376,6 +381,15 @@ void MainWindow::slotGuardarPartida(){
         QJsonDocument saveDoc(jsonPrincipal);
         saveFile.write(saveDoc.toJson());
         saveFile.close();
+
+}
+
+void MainWindow::slotCargarPartida(){
+
+        Bola * pb = bolas[0];
+        delete pb;
+
+        bolas.clear();        
 
 }
 
