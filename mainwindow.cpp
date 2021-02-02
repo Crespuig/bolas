@@ -12,7 +12,10 @@
 #include <QMimeData>
 #include <QDrag>
 #include <QSystemTrayIcon>
+#include <QDebug>
 
+#include <QByteArray>
+#include <QBuffer>
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -59,8 +62,8 @@ void MainWindow::inicializarBolas(){
         for (int i = 0; i < 5; i++){
               bolas.append(new Bola(random()%width(),
                                 random()%height(),
-                                ((4 + random()%50 / 50.1) - 0.05),
-                                ((4 + random()%50 / 50.1) - 0.05)));
+                                ((2 + random()%50 / 50.1) - 0.05),
+                                ((2 + random()%50 / 50.1) - 0.05)));
         }
         
         bolaJugador = new Bola(100,100,0,0);
@@ -121,7 +124,7 @@ void MainWindow::incializarMenus(){
                 this, SLOT(slotGuardarPartida()));
         menuFichero->addAction(accionGuardarPartida);
 
-        accionCargarPartida = new QAction("Guardar partida", this);
+        accionCargarPartida = new QAction("Cargar partida", this);
         connect(accionCargarPartida, SIGNAL(triggered()),
                 this, SLOT(slotCargarPartida()));
         menuFichero->addAction(accionCargarPartida);
@@ -359,8 +362,11 @@ void MainWindow::slotGuardarPartida(){
 
         QJsonObject jsonJugador;
 
-        jsonJugador["x"] = bolaJugador->posicionX;
-        jsonJugador["y"] = bolaJugador->posicionY;
+        jsonJugador["posX"] = bolaJugador->posicionX;
+        jsonJugador["velX"] = bolaJugador->velX;
+        jsonJugador["posY"] = bolaJugador->posicionY;
+        jsonJugador["velY"] = bolaJugador->velY;
+
 
         jsonPrincipal["jugador"] = jsonJugador;
 
@@ -368,8 +374,19 @@ void MainWindow::slotGuardarPartida(){
         QJsonObject bolaJson;
 
         for(Bola * b : bolas){
-                bolaJson["x"] = b->posicionX;
-                bolaJson["y"] =b->posicionY;
+                bolaJson["posX"] = b->posicionX;
+                bolaJson["velX"] = b->velX;
+                bolaJson["posY"] = b->posicionY;
+                bolaJson["velY"] = b->velY;
+
+                //guardar la imagen
+                QImage img = b->imagen;
+                QByteArray byteArray;
+                QBuffer buffer(&byteArray);
+                img.save(&buffer, "PNG");
+                QString imgBase64 = QString::fromLatin1(byteArray.toBase64().data());
+
+                bolaJson["imagen"] = imgBase64;        
                 arrayBolas.append(bolaJson);
         }
 
@@ -385,11 +402,58 @@ void MainWindow::slotGuardarPartida(){
 }
 
 void MainWindow::slotCargarPartida(){
+        for (int i = 0; i < bolas.size(); i++){
+                Bola * pb = bolas[i];
+                delete pb;
+        }
+        
+        bolas.clear(); 
 
-        Bola * pb = bolas[0];
-        delete pb;
+        //Siempre igual
+        QFile loadFile(QStringLiteral("save.json"));
+        if (!loadFile.open(QIODevice::ReadOnly)){
+                return;
+        }
 
-        bolas.clear();        
+        QByteArray savedData = loadFile.readAll();
+        QJsonDocument readDoc(QJsonDocument::fromJson(savedData));
+        QJsonObject jsonPrincipal = readDoc.object();
+
+        if (!(jsonPrincipal.contains("bolas") && jsonPrincipal["bolas"].isArray())){
+                qDebug()<< "Cargar partida: bolas no encontradas en el archivo";
+                return;
+        }
+
+        /*QJsonValue valorJson = jsonPrincipal["bolas"];
+        AJsonArray = valorJson.toArray();*/
+
+        QJsonArray arrayBolas = jsonPrincipal["bolas"].toArray();
+
+       
+     
+        for (int i = 0; i < arrayBolas.size(); i++){
+                QJsonObject objetoBola = arrayBolas[i].toObject();
+                float posXNuevaBola = objetoBola["posX"].toDouble();
+                float velXNuevaBola = objetoBola["velX"].toDouble();
+                float posYNuevaBola = objetoBola["posY"].toDouble();
+                float velYNuevaBola = objetoBola["velY"].toDouble();
+
+                Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola);       
+
+                bolas.append(nb);
+
+                QImage imagenNB;
+                //leer el elemento json y convertirlo
+                QString imgBase64 = objetoBola["imagen"].toString();
+                QByteArray byteArray = imgBase64.toLatin1();
+                byteArray = QByteArray::fromBase64(byteArray, QByteArray::Base64Encoding);
+                QBuffer buffer(&byteArray);
+                imagenNB.loadFromData(byteArray, "PNG");
+                nb->imagen = imagenNB;
+        }
+        
+        
+        
 
 }
 
