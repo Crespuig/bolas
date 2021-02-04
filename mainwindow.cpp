@@ -22,6 +22,8 @@
 #include <QJsonArray>
 
 
+
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         resize(800, 600);
 
@@ -43,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dTablaBolas = NULL;
         dControlBolas = NULL;
         dArbolBolas = NULL;
+        dChart = NULL;
         drag = NULL;
         trayIcon = NULL;
         menuContextual = NULL;
@@ -128,6 +131,11 @@ void MainWindow::incializarMenus(){
         connect(accionCargarPartida, SIGNAL(triggered()),
                 this, SLOT(slotCargarPartida()));
         menuFichero->addAction(accionCargarPartida);
+
+        accionDChart = new QAction("Gráfico", this);
+        connect(accionDChart, SIGNAL(triggered()),
+                this, SLOT(slotDChart()));
+        menuFichero->addAction(accionDChart);
 
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
@@ -355,6 +363,15 @@ void MainWindow::slotChocar(){
                         QString("Juega mejor! que te van a matar"),
                         QSystemTrayIcon::Information, 1000);
 
+}
+
+void MainWindow::slotDChart(){
+        if (dChart == NULL){
+                dChart = new DChart(&bolas);
+                
+        }
+        
+        dChart->show();
 }
 
 void MainWindow::slotGuardarPartida(){

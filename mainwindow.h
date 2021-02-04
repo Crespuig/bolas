@@ -10,10 +10,14 @@
 #include "dinfobolas.h"
 #include "dtablabolas.h"
 #include "dcontrolbolas.h"
+#include "dchart.h"
 #include "darbolbolas.h"
 #include <QKeyEvent>
 #include <QDrag>
 #include <QSystemTrayIcon>
+#include <QChartView>
+
+QT_CHARTS_USE_NAMESPACE
 
 class MainWindow : public QMainWindow{
 Q_OBJECT
@@ -50,6 +54,7 @@ public:
     DTablaBolas * dTablaBolas;
     DControlBolas * dControlBolas;
     DArbolBolas * dArbolBolas;
+    DChart * dChart;
     
     QAction * accionDInformacion;
     QAction * accionDInfoBolas;
@@ -58,6 +63,7 @@ public:
     QAction * accionDArbolBolas;
     QAction * accionGuardarPartida;
     QAction * accionCargarPartida;
+    QAction * accionDChart;
 
 private:
     void performDrag();
@@ -75,6 +81,7 @@ public slots:
     void slotChocar();
     void slotGuardarPartida();
     void slotCargarPartida();
+    void slotDChart();
 
 signals:
     void senyalBolaNueva(Bola *);
