@@ -9,6 +9,8 @@
 #include <QChartView>
 #include <QChart>
 #include <QTimer>
+#include <QLineSeries>
+
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -22,6 +24,11 @@ class DChart : public QDialog, public Ui::DChart{
         QChartView * vistaChart;
         QChart * datosChart;
         QTimer *temporizador;
+        QLineSeries * serie;
+
+    public slots:
+        void slotResaltar(const QPointF &punto, bool estado);
+        void slotTemporizador();
         
 
 };

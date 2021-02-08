@@ -16,6 +16,7 @@ Bola::Bola(float posicionX, float posicionY, float velX, float velY){
         vida = vidaInicial;
 
         colision = 0;
+        colisionParedes = 0;
         //nombre
         //numero
 
@@ -38,18 +39,22 @@ void Bola::moverBola(int ancho, int alto){
         //seccion de deteccion de colision contra los bordes
         if (posicionX >= ancho - diametro){
                 velX = -fabs(velX);
+                colisionParedes++;
         }
         
         if (posicionX <= 0){
                 velX = fabs(velX);
+                colisionParedes++;
         }
 
         if (posicionY >= alto - diametro){
                 velY = -fabs(velY);
+                colisionParedes++;
         }
         
         if (posicionY <= 0){
                 velY = fabs(velY);
+                colisionParedes++;
         }
 
         //seccion de actualizacion de la posicion
@@ -86,6 +91,9 @@ void Bola::pintar(QPainter &pintor){
         pintor.drawText(posicionX - 10, 
                         posicionY - 20, 
                         QString("Colisiones: ") + QString::number(colision));
+        pintor.drawText(posicionX - 10, 
+                        posicionY - 35, 
+                        QString("Colisiones Pared: ") + QString::number(colisionParedes));
 }
 
 
@@ -117,6 +125,7 @@ bool Bola::choca(Bola * otra){
         if (this->posicionY > otra->posicionY){
                 abajo=this;
                 arriba=otra;
+                
         }else{
                 arriba=this;
                 abajo=otra;
@@ -137,7 +146,11 @@ bool Bola::choca(Bola * otra){
         }
         
 
-        colision++;
+        if (rebote){
+                colision++;
+                otra->colision++;
+        }
+        
         
         
         return rebote;
