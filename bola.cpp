@@ -14,6 +14,8 @@ Bola::Bola(float posicionX, float posicionY, float velX, float velY){
         this->velX = velX;
         this->velY = velY;
         vida = vidaInicial;
+
+        colision = 0;
         //nombre
         //numero
 
@@ -81,9 +83,9 @@ void Bola::pintar(QPainter &pintor){
         
         
 
-        /*pintor.drawText(posicionX - 10, 
+        pintor.drawText(posicionX - 10, 
                         posicionY - 20, 
-                        QString("Vidas ") + QString::number(vida));*/
+                        QString("Colisiones: ") + QString::number(colision));
 }
 
 
@@ -134,6 +136,8 @@ bool Bola::choca(Bola * otra){
                 rebote = true;
         }
         
+
+        colision++;
         
         
         return rebote;

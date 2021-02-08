@@ -17,6 +17,8 @@ public:
     float velX;
     float velY;
 
+    int colision;
+
     QImage imagen;
     bool mostrarImagen;
     

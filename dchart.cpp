@@ -29,8 +29,8 @@ DChart::DChart(QVector<Bola*> * bolas, QWidget * parent) : QDialog(parent){
 
     QLineSeries * serie = new QLineSeries();
     serie->append(1,1);
-    serie->append(2,0);
-    serie->append(4,6);
+    serie->append(2,20);
+    serie->append(3,25);
     datosChart->addSeries(serie);
 
     QValueAxis * axisY = new QValueAxis();
