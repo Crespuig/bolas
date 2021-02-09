@@ -16,6 +16,8 @@ DChart::DChart(QVector<Bola*> * bolas, QWidget * parent) : QDialog(parent){
     miVector = bolas;
     colisiones = 0;
 
+    miVectorSeries = new QVector<QLineSeries*>();
+
     temporizador = new QTimer();
     temporizador->setInterval(1000);
     temporizador->setSingleShot(false);
@@ -33,12 +35,16 @@ DChart::DChart(QVector<Bola*> * bolas, QWidget * parent) : QDialog(parent){
     layout->addWidget(vistaChart);
     //layout->addWidget(new QPushButton("hola"));
 
+
+
     for (int i = 0; i < miVector->size(); i++){
         serie = new QLineSeries();
         serie->append(0,0);
 
-        miVectorSeries = new QVector<QLineSeries*>();
-        miVectorSeries->at(i)->serie;
+        
+            miVectorSeries->at(i);
+        
+        
     }
     
 
