@@ -65,8 +65,8 @@ void MainWindow::inicializarBolas(){
         for (int i = 0; i < 5; i++){
               bolas.append(new Bola(random()%width(),
                                 random()%height(),
-                                ((2 + random()%50 / 50.1) - 0.05),
-                                ((2 + random()%50 / 50.1) - 0.05)));
+                                ((1 + random()%50 / 50.1) - 0.05),
+                                ((1 + random()%50 / 50.1) - 0.05)));
         }
         
         bolaJugador = new Bola(100,100,0,0);
@@ -359,9 +359,9 @@ void MainWindow::slotChocar(){
 
         if(trayIcon == NULL) return;
 
-        trayIcon->showMessage(QString("hayyyyy choooooqueeee"),
+        /*trayIcon->showMessage(QString("hayyyyy choooooqueeee"),
                         QString("Juega mejor! que te van a matar"),
-                        QSystemTrayIcon::Information, 1000);
+                        QSystemTrayIcon::Information, 1000);*/
 
 }
 
