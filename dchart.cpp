@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QValueAxis>
 #include <QPen>
+#include <QDebug>
 
 
 DChart::DChart(QVector<Bola*> * bolas, QWidget * parent) : QDialog(parent){
@@ -16,7 +17,7 @@ DChart::DChart(QVector<Bola*> * bolas, QWidget * parent) : QDialog(parent){
     miVector = bolas;
     colisiones = 0;
 
-    miVectorSeries = new QVector<QLineSeries*>();
+    miVectorSeries;
 
     temporizador = new QTimer();
     temporizador->setInterval(1000);
@@ -33,59 +34,58 @@ DChart::DChart(QVector<Bola*> * bolas, QWidget * parent) : QDialog(parent){
     QHBoxLayout * layout = new QHBoxLayout();
     frameChart->setLayout(layout);
     layout->addWidget(vistaChart);
-    //layout->addWidget(new QPushButton("hola"));
-
-
-
-    for (int i = 0; i < miVector->size(); i++){
-        serie = new QLineSeries();
-        serie->append(0,0);
-
-        
-            miVectorSeries->at(i);
-        
-        
-    }
-    
 
 
     
-    
 
-    datosChart->addSeries(serie);
 
     QValueAxis * axisY = new QValueAxis();
-    axisY->setRange(0,30);
+    axisY->setRange(0,60);
     axisY->setTitleText("Goles");
 
     QValueAxis * axisX = new QValueAxis();
-    axisX->setRange(0,30);
+    axisX->setRange(0,60);
     axisX->setTitleText("Dias");
 
     datosChart->addAxis(axisY, Qt::AlignLeft);
     datosChart->addAxis(axisX, Qt::AlignBottom);
 
-    connect(serie,SIGNAL(hovered(const QPointF &,bool)),
-            this,SLOT(slotResaltar(const QPointF &,bool)));
+    
     
     vistaChart->setRenderHint(QPainter::Antialiasing);
 
-    serie->attachAxis(axisY);
-    serie->attachAxis(axisX);
+    for (int i = 0; i < miVector->size(); i++){
+        serie = new QLineSeries();
+        miVectorSeries.append(serie);
+        datosChart->addSeries(miVectorSeries.at(i));        
+        serie->append(0,0);
+        //serie->append(1,i);
+
+        serie->attachAxis(axisY);
+        serie->attachAxis(axisX);
+        
+    }
+    
 
 
 }
 
 void DChart::slotTemporizador(){ 
-    static int count = 0;
+    static int count = 2;
     count++;   
 
     int totalColisiones = 0;
     for (int i = 0; i < miVector->size(); i++){
         totalColisiones+=miVector->at(i)->colision;
     }
-    serie->append(count, totalColisiones);
-     
+    for (int j = 0; j < miVectorSeries.size(); j++){
+        
+        miVectorSeries.at(j)->append(count, miVector->at(j)->colision);
+        //qDebug()<<"colisiones bola"<< j << "total " <<miVector->at(j)->colision;
+
+    }
+    
+    
 
     QList<QAbstractAxis*> lista = datosChart->axes(Qt::Horizontal);   
     
@@ -102,8 +102,11 @@ void DChart::slotTemporizador(){
     axisX->setRange(0,count +1);
     axisX->setTitleText("Tiempo");
     
+ 
     datosChart->addAxis(axisX,Qt::AlignBottom);
     serie->attachAxis(axisX);
+    
+    
     
 
     /*---------------------------------------------------------------------------------*/

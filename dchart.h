@@ -20,7 +20,7 @@ class DChart : public QDialog, public Ui::DChart{
     public:
         DChart(QVector<Bola*> * elVector, QWidget * parent = nullptr);
         QVector <Bola *> * miVector;
-        QVector <QLineSeries * > * miVectorSeries;
+        QVector <QLineSeries * > miVectorSeries;
         int colisiones;
 
         QChartView * vistaChart;
