@@ -17,6 +17,7 @@ Bola::Bola(float posicionX, float posicionY, float velX, float velY){
 
         colision = 0;
         colisionParedes = 0;
+        nombre = "Bola: ";
         //nombre
         //numero
 
@@ -86,7 +87,9 @@ void Bola::pintar(QPainter &pintor){
                 pintor.drawEllipse(posicionX,posicionY,Bola::diametro,Bola::diametro);
         }
         
-        
+        pintor.drawText(posicionX + 10,
+                        posicionY + 65,
+                        QString(nombre)); 
 
         pintor.drawText(posicionX - 10, 
                         posicionY - 20, 

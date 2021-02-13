@@ -5,6 +5,7 @@
 #include <QColor>
 #include <QVector>
 #include <QImage>
+#include <QString>
 
 class Bola {
 
@@ -21,6 +22,7 @@ public:
 
     QImage imagen;
     bool mostrarImagen;
+    QString nombre;
     
     int vida;
     static int vidaInicial;
