@@ -30,15 +30,15 @@ public:
     {
         if (dTablaInfo->objectName().isEmpty())
             dTablaInfo->setObjectName(QStringLiteral("dTablaInfo"));
-        dTablaInfo->resize(665, 397);
+        dTablaInfo->resize(829, 602);
         buttonBox = new QDialogButtonBox(dTablaInfo);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setGeometry(QRect(320, 360, 341, 32));
+        buttonBox->setGeometry(QRect(470, 560, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tablaInfo = new QTableView(dTablaInfo);
         tablaInfo->setObjectName(QStringLiteral("tablaInfo"));
-        tablaInfo->setGeometry(QRect(5, 11, 651, 351));
+        tablaInfo->setGeometry(QRect(5, 11, 811, 551));
 
         retranslateUi(dTablaInfo);
         QObject::connect(buttonBox, SIGNAL(accepted()), dTablaInfo, SLOT(accept()));

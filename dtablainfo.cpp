@@ -33,7 +33,7 @@ int ModeloBolasInfo::rowCount(const QModelIndex &parent) const{
 }
 
 int ModeloBolasInfo::columnCount(const QModelIndex &parent) const{
-    return 4;
+    return 6;
 }
 
 QVariant ModeloBolasInfo::data(const QModelIndex &index, int role) const{
@@ -46,25 +46,16 @@ QVariant ModeloBolasInfo::data(const QModelIndex &index, int role) const{
         return QVariant();
     }
 
-    if (role == Qt::DecorationRole && columna == 2){
-        if (vector->at(fila)->velX >= 0){
-            QColor colorGreen = "green";
+    if (role == Qt::DecorationRole && columna == 3){
+        if (vector->at(fila)->vida <= 0){
+            QColor colorGreen = "red";
             return QVariant(colorGreen);
         }else{
-            QColor colorRed = "red";
+            QColor colorRed = "green";
             return QVariant(colorRed);
         }
     }
 
-    if (role == Qt::DecorationRole && columna == 3){
-        if (vector->at(fila)->velY >= 0){
-            QColor colorGreen = "green";
-            return QVariant(colorGreen);
-        }else{
-            QColor colorRed = "red";
-            return QVariant(colorRed);
-        }  
-    }
 
     if (role == Qt::DecorationRole && columna <= 1){
         QColor color = vector->at(fila)->color;
@@ -74,16 +65,24 @@ QVariant ModeloBolasInfo::data(const QModelIndex &index, int role) const{
 
     switch (columna){
     case 0:
-        return vector->at(fila)->posicionX;
+        return vector->at(fila)->nombre;
         break;
     case 1:
-        return vector->at(fila)->posicionY;
+        return vector->at(fila)->colision;
         break;
     case 2:
-        return vector->at(fila)->velX;
+        return vector->at(fila)->colisionParedes;
         break;
     case 3:
-        return vector->at(fila)->velY;
+        return vector->at(fila)->vida;
+        break;
+    case 4:
+        return vector->at(fila)->hijas.size();
+        break;
+    case 5:
+        if(vector->at(fila)->padre != NULL)
+            return vector->at(fila)->padre->nombre;
+        return QString("Sin padre");
         break;
     
     };
@@ -103,16 +102,22 @@ QVariant ModeloBolasInfo::headerData(int section, Qt::Orientation orientation, i
     
     switch (section){
         case 0:
-            return QString("PosX");
+            return QString("nombre");
             break;
         case 1:
-            return QString("PosY");
+            return QString("Colisiones");
             break;
         case 2:
-            return QString("VelX");
+            return QString("Col. pared");
             break;
         case 3:
-            return QString("VelY");
+            return QString("Vida");
+            break;
+        case 4:
+            return QString("Hijas");
+            break;
+        case 5:
+            return QString("Padre");
             break;
     };
     return QVariant();
