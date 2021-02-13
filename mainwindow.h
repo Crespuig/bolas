@@ -36,6 +36,7 @@ public:
 
     float initialMouseClickX;
     float initialMouseClickY;
+    //QString nombre;
 
     QTimer *temporizador;
     QVector <Bola*> bolas;

@@ -66,10 +66,10 @@ void MainWindow::inicializarBolas(){
               bolas.append(new Bola(random()%width(),
                                 random()%height(),
                                 ((1 + random()%50 / 50.1) - 0.05),
-                                ((1 + random()%50 / 50.1) - 0.05)));
+                                ((1 + random()%50 / 50.1) - 0.05), QString("Bola ") + QString::number(i)));
         }
         
-        bolaJugador = new Bola(100,100,0,0);
+        bolaJugador = new Bola(100,100,0,0,"Bola ");
         bolaJugador->color = QColor("black");
         
 }
@@ -215,7 +215,8 @@ void MainWindow::mousePressEvent(QMouseEvent *event){
 void MainWindow::mouseReleaseEvent(QMouseEvent *evento){
         bolas.append(new Bola(initialMouseClickX, initialMouseClickY,
         (float)(evento->x() - initialMouseClickX) / width() * 10,
-        (float)(evento->y() - initialMouseClickY) / height() * 10));
+        (float)(evento->y() - initialMouseClickY) / height() * 10,
+        QString("Bola ")));
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event){
@@ -271,11 +272,9 @@ void MainWindow::slotRepintar(){
                                        if (bolas.size() < 25){
                                                int numeroRandom = random()%100;
                                                if(numeroRandom < 18){
-                                                        Bola *nueva = new Bola(
-                                                                bolas.at(i)->posicionX+20,
-                                                                bolas.at(i)->posicionY-20,
-                                                                ((4 + random()%50 / 50.1) - 0.5),
-                                                                (4 + random()%50 / 50.1) - 0.5);
+                                                        Bola *nueva = new Bola(bolas.at(i)->posicionX+20, bolas.at(i)->posicionY-20,
+                                                                ((4 + random()%50 / 50.1) - 0.5), ((4 + random()%50 / 50.1) - 0.5), 
+                                                                QString ("Bola "));
                                                         nueva->padre = bolas.at(i);
                                                         bolas.at(i)->hijas.append(nueva);
                                                         
@@ -454,8 +453,9 @@ void MainWindow::slotCargarPartida(){
                 float velXNuevaBola = objetoBola["velX"].toDouble();
                 float posYNuevaBola = objetoBola["posY"].toDouble();
                 float velYNuevaBola = objetoBola["velY"].toDouble();
+                QString nuevoNombre = objetoBola["Bola "].toString();
 
-                Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola);       
+                Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nuevoNombre);       
 
                 bolas.append(nb);
 

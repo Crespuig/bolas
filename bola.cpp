@@ -8,16 +8,16 @@
 
 int Bola::vidaInicial;
 
-Bola::Bola(float posicionX, float posicionY, float velX, float velY){
+Bola::Bola(float posicionX, float posicionY, float velX, float velY, QString nombre){
         this->posicionX = posicionX;
         this->posicionY = posicionY;
         this->velX = velX;
         this->velY = velY;
+        this->nombre = nombre;
         vida = vidaInicial;
 
         colision = 0;
         colisionParedes = 0;
-        nombre = "Bola: ";
         //nombre
         //numero
 
