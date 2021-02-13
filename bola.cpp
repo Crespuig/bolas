@@ -87,8 +87,8 @@ void Bola::pintar(QPainter &pintor){
                 pintor.drawEllipse(posicionX,posicionY,Bola::diametro,Bola::diametro);
         }
 
-        pintor.drawText(posicionX + 60,
-                        posicionY + 5,
+        pintor.drawText(posicionX + 17,
+                        posicionY - 5,
                         QString::number(vida));
         
         pintor.drawText(posicionX + 10,
