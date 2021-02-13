@@ -18,6 +18,12 @@ WidgetBola::WidgetBola(Bola * bola, QWidget * parent) : QWidget(parent), miBola(
     connect(botonParar, SIGNAL(clicked()),
         this, SLOT(slotBotonParar()));
 
+    connect(botonParar, SIGNAL(clicked()),
+        this, SLOT(slotBotonAcelerar()));
+    
+    connect(botonParar, SIGNAL(clicked()),
+        this, SLOT(slotBotonFrenar()));
+
     setAcceptDrops(true);
 
 }
@@ -25,6 +31,16 @@ WidgetBola::WidgetBola(Bola * bola, QWidget * parent) : QWidget(parent), miBola(
 void WidgetBola::slotBotonParar(){
     miBola->velX = 0;
     miBola->velY = 0;
+}
+
+void WidgetBola::slotBotonAcelerar(){
+    miBola->velX = miBola->velX * 1.05;
+    miBola->velY = miBola->velX * 1.05;
+}
+
+void WidgetBola::slotBotonFrenar(){
+    miBola->velX = miBola->velX / 2;
+    miBola->velY = miBola->velY / 2;
 }
 
 void WidgetBola::dragEnterEvent ( QDragEnterEvent * event ) {

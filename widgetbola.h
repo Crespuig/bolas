@@ -20,6 +20,8 @@ class WidgetBola : public QWidget, public Ui::WidgetBola{
 
     public slots:
         void slotBotonParar();
+        void slotBotonAcelerar();
+        void slotBotonFrenar();
 
 };
 

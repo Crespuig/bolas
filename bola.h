@@ -40,6 +40,8 @@ public:
     void pintar(QPainter &pintor);
     bool choca(Bola * otra);
     void ponImagen(QImage&);
+    /*void acelerar();
+    void frenar();*/
 
 };
 

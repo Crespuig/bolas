@@ -69,7 +69,7 @@ void MainWindow::inicializarBolas(){
                                 ((1 + random()%50 / 50.1) - 0.05), QString("Bola ") + QString::number(i)));
         }
         
-        bolaJugador = new Bola(100,100,0,0,"Bola ");
+        bolaJugador = new Bola(100,100,0,0,"Bola Jugador");
         bolaJugador->color = QColor("black");
         
 }

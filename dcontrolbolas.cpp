@@ -18,6 +18,12 @@ DControlBolas::DControlBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(
 
     connect(botonPararBola, SIGNAL(clicked()),
         this, SLOT(slotBotonPararBola()));
+
+    connect(botonAcelerar, SIGNAL(clicked()),
+        this, SLOT(slotAcelerar()));
+    
+    connect(botonFrenar, SIGNAL(clicked()),
+        this, SLOT(slotFrenar()));
 }
 
 void DControlBolas::slotBotonPararBola(){
@@ -37,4 +43,32 @@ void DControlBolas::slotBotonPararBola(){
 
 void DControlBolas::slotBolaNueva(Bola *nueva){
     tabBolas->addTab(new WidgetBola(nueva), QString("Bola "));
+}
+
+void DControlBolas::slotAcelerar(){
+   if (checkTodas->isChecked()){
+        for (int i = 0; i < tabBolas->count(); i++){
+            QWidget * unWidget = tabBolas->widget(i);
+            WidgetBola * unWidgetBola = qobject_cast<WidgetBola*>(unWidget);
+            unWidgetBola->slotBotonAcelerar();
+        }    
+    }else{
+        QWidget * unWidget = tabBolas->currentWidget();
+        WidgetBola * unWidgetBola = qobject_cast<WidgetBola*>(unWidget);
+        unWidgetBola->slotBotonAcelerar();
+    } 
+}
+
+void DControlBolas::slotFrenar(){
+    if (checkTodas->isChecked()){
+        for (int i = 0; i < tabBolas->count(); i++){
+            QWidget * unWidget = tabBolas->widget(i);
+            WidgetBola * unWidgetBola = qobject_cast<WidgetBola*>(unWidget);
+            unWidgetBola->slotBotonFrenar();
+        }    
+    }else{
+        QWidget * unWidget = tabBolas->currentWidget();
+        WidgetBola * unWidgetBola = qobject_cast<WidgetBola*>(unWidget);
+        unWidgetBola->slotBotonFrenar();
+    }
 }

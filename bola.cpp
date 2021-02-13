@@ -163,4 +163,12 @@ bool Bola::choca(Bola * otra){
         return rebote;
 }
 
+/*void Bola::acelerar(){
+        velX = velX * 1.05;
+        velY = velY * 1.05;
+}
 
+void Bola::frenar(){
+        velX = velX / 2;
+        velY = velY / 2;
+}*/

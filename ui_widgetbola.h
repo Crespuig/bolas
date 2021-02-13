@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widgetbola.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,10 @@
 #define UI_WIDGETBOLA_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -25,13 +28,13 @@ public:
     void setupUi(QWidget *WidgetBola)
     {
         if (WidgetBola->objectName().isEmpty())
-            WidgetBola->setObjectName(QString::fromUtf8("WidgetBola"));
+            WidgetBola->setObjectName(QStringLiteral("WidgetBola"));
         WidgetBola->resize(171, 111);
         botonColor = new QPushButton(WidgetBola);
-        botonColor->setObjectName(QString::fromUtf8("botonColor"));
+        botonColor->setObjectName(QStringLiteral("botonColor"));
         botonColor->setGeometry(QRect(40, 10, 89, 25));
         botonParar = new QPushButton(WidgetBola);
-        botonParar->setObjectName(QString::fromUtf8("botonParar"));
+        botonParar->setObjectName(QStringLiteral("botonParar"));
         botonParar->setGeometry(QRect(40, 50, 89, 25));
 
         retranslateUi(WidgetBola);
@@ -41,9 +44,9 @@ public:
 
     void retranslateUi(QWidget *WidgetBola)
     {
-        WidgetBola->setWindowTitle(QApplication::translate("WidgetBola", "Form", nullptr));
-        botonColor->setText(QApplication::translate("WidgetBola", "Elegir color", nullptr));
-        botonParar->setText(QApplication::translate("WidgetBola", "Parar", nullptr));
+        WidgetBola->setWindowTitle(QApplication::translate("WidgetBola", "Form", Q_NULLPTR));
+        botonColor->setText(QApplication::translate("WidgetBola", "Elegir color", Q_NULLPTR));
+        botonParar->setText(QApplication::translate("WidgetBola", "Parar", Q_NULLPTR));
     } // retranslateUi
 
 };

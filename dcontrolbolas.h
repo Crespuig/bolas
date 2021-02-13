@@ -19,6 +19,8 @@ class DControlBolas : public QDialog, public Ui::DControlBolas{
     public slots:
         void slotBotonPararBola();
         void slotBolaNueva(Bola *);
+        void slotAcelerar();
+        void slotFrenar();
 
 };
 

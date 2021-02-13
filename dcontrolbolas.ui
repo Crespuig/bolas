@@ -65,7 +65,7 @@
   <widget class="QCheckBox" name="checkTodas">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>110</x>
      <y>340</y>
      <width>92</width>
      <height>23</height>
@@ -73,6 +73,32 @@
    </property>
    <property name="text">
     <string>CheckBox</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="botonAcelerar">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>330</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Acelerar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="botonFrenar">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>330</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Frenar</string>
    </property>
   </widget>
  </widget>

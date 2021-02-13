@@ -165,12 +165,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		dinformacion.h \
 		dtablabolas.h \
 		mainwindow.h \
-		ui_darbolbolas.h \
-		ui_dchart.h \
-		ui_dcontrolbolas.h \
-		ui_dinfobolas.h \
-		ui_dtablabolas.h \
-		ui_widgetbola.h \
 		widgetbola.h bola.cpp \
 		darbolbolas.cpp \
 		dchart.cpp \
@@ -366,7 +360,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents bola.h darbolbolas.h dchart.h dcontrolbolas.h dinfobolas.h dinformacion.h dtablabolas.h mainwindow.h ui_darbolbolas.h ui_dchart.h ui_dcontrolbolas.h ui_dinfobolas.h ui_dtablabolas.h ui_widgetbola.h widgetbola.h $(DISTDIR)/
+	$(COPY_FILE) --parents bola.h darbolbolas.h dchart.h dcontrolbolas.h dinfobolas.h dinformacion.h dtablabolas.h mainwindow.h widgetbola.h $(DISTDIR)/
 	$(COPY_FILE) --parents bola.cpp darbolbolas.cpp dchart.cpp dcontrolbolas.cpp dinfobolas.cpp dinformacion.cpp dtablabolas.cpp main.cpp mainwindow.cpp widgetbola.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents darbolbolas.ui dchart.ui dcontrolbolas.ui dinfobolas.ui dtablabolas.ui widgetbola.ui $(DISTDIR)/
 
