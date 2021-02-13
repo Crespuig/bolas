@@ -57,6 +57,7 @@ SOURCES       = bola.cpp \
 		dinfobolas.cpp \
 		dinformacion.cpp \
 		dtablabolas.cpp \
+		dtablainfo.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		widgetbola.cpp moc_darbolbolas.cpp \
@@ -64,6 +65,7 @@ SOURCES       = bola.cpp \
 		moc_dcontrolbolas.cpp \
 		moc_dinfobolas.cpp \
 		moc_dtablabolas.cpp \
+		moc_dtablainfo.cpp \
 		moc_mainwindow.cpp \
 		moc_widgetbola.cpp
 OBJECTS       = bola.o \
@@ -73,6 +75,7 @@ OBJECTS       = bola.o \
 		dinfobolas.o \
 		dinformacion.o \
 		dtablabolas.o \
+		dtablainfo.o \
 		main.o \
 		mainwindow.o \
 		widgetbola.o \
@@ -81,6 +84,7 @@ OBJECTS       = bola.o \
 		moc_dcontrolbolas.o \
 		moc_dinfobolas.o \
 		moc_dtablabolas.o \
+		moc_dtablainfo.o \
 		moc_mainwindow.o \
 		moc_widgetbola.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -164,6 +168,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		dinfobolas.h \
 		dinformacion.h \
 		dtablabolas.h \
+		dtablainfo.h \
 		mainwindow.h \
 		widgetbola.h bola.cpp \
 		darbolbolas.cpp \
@@ -172,6 +177,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		dinfobolas.cpp \
 		dinformacion.cpp \
 		dtablabolas.cpp \
+		dtablainfo.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		widgetbola.cpp
@@ -183,7 +189,7 @@ TARGET        = bolas
 first: all
 ####### Build rules
 
-$(TARGET): ui_darbolbolas.h ui_dchart.h ui_dcontrolbolas.h ui_dinfobolas.h ui_dtablabolas.h ui_widgetbola.h $(OBJECTS)  
+$(TARGET): ui_darbolbolas.h ui_dchart.h ui_dcontrolbolas.h ui_dinfobolas.h ui_dtablabolas.h ui_dtablainfo.h ui_widgetbola.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: bolas.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -360,9 +366,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents bola.h darbolbolas.h dchart.h dcontrolbolas.h dinfobolas.h dinformacion.h dtablabolas.h mainwindow.h widgetbola.h $(DISTDIR)/
-	$(COPY_FILE) --parents bola.cpp darbolbolas.cpp dchart.cpp dcontrolbolas.cpp dinfobolas.cpp dinformacion.cpp dtablabolas.cpp main.cpp mainwindow.cpp widgetbola.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents darbolbolas.ui dchart.ui dcontrolbolas.ui dinfobolas.ui dtablabolas.ui widgetbola.ui $(DISTDIR)/
+	$(COPY_FILE) --parents bola.h darbolbolas.h dchart.h dcontrolbolas.h dinfobolas.h dinformacion.h dtablabolas.h dtablainfo.h mainwindow.h widgetbola.h $(DISTDIR)/
+	$(COPY_FILE) --parents bola.cpp darbolbolas.cpp dchart.cpp dcontrolbolas.cpp dinfobolas.cpp dinformacion.cpp dtablabolas.cpp dtablainfo.cpp main.cpp mainwindow.cpp widgetbola.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents darbolbolas.ui dchart.ui dcontrolbolas.ui dinfobolas.ui dtablabolas.ui dtablainfo.ui widgetbola.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -394,9 +400,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -w -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_darbolbolas.cpp moc_dchart.cpp moc_dcontrolbolas.cpp moc_dinfobolas.cpp moc_dtablabolas.cpp moc_mainwindow.cpp moc_widgetbola.cpp
+compiler_moc_header_make_all: moc_darbolbolas.cpp moc_dchart.cpp moc_dcontrolbolas.cpp moc_dinfobolas.cpp moc_dtablabolas.cpp moc_dtablainfo.cpp moc_mainwindow.cpp moc_widgetbola.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_darbolbolas.cpp moc_dchart.cpp moc_dcontrolbolas.cpp moc_dinfobolas.cpp moc_dtablabolas.cpp moc_mainwindow.cpp moc_widgetbola.cpp
+	-$(DEL_FILE) moc_darbolbolas.cpp moc_dchart.cpp moc_dcontrolbolas.cpp moc_dinfobolas.cpp moc_dtablabolas.cpp moc_dtablainfo.cpp moc_mainwindow.cpp moc_widgetbola.cpp
 moc_darbolbolas.cpp: bola.h \
 		ui_darbolbolas.h \
 		darbolbolas.h \
@@ -434,6 +440,13 @@ moc_dtablabolas.cpp: bola.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hector/Documentos/interfaces/bolas -I/home/hector/Documentos/interfaces/bolas -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCharts -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include dtablabolas.h -o moc_dtablabolas.cpp
 
+moc_dtablainfo.cpp: bola.h \
+		ui_dtablainfo.h \
+		dtablainfo.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/hector/Documentos/interfaces/bolas -I/home/hector/Documentos/interfaces/bolas -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtCharts -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include dtablainfo.h -o moc_dtablainfo.cpp
+
 moc_mainwindow.cpp: bola.h \
 		dinformacion.h \
 		dinfobolas.h \
@@ -444,6 +457,8 @@ moc_mainwindow.cpp: bola.h \
 		ui_dcontrolbolas.h \
 		widgetbola.h \
 		ui_widgetbola.h \
+		dtablainfo.h \
+		ui_dtablainfo.h \
 		dchart.h \
 		ui_dchart.h \
 		darbolbolas.h \
@@ -462,9 +477,9 @@ moc_widgetbola.cpp: bola.h \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_darbolbolas.h ui_dchart.h ui_dcontrolbolas.h ui_dinfobolas.h ui_dtablabolas.h ui_widgetbola.h
+compiler_uic_make_all: ui_darbolbolas.h ui_dchart.h ui_dcontrolbolas.h ui_dinfobolas.h ui_dtablabolas.h ui_dtablainfo.h ui_widgetbola.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_darbolbolas.h ui_dchart.h ui_dcontrolbolas.h ui_dinfobolas.h ui_dtablabolas.h ui_widgetbola.h
+	-$(DEL_FILE) ui_darbolbolas.h ui_dchart.h ui_dcontrolbolas.h ui_dinfobolas.h ui_dtablabolas.h ui_dtablainfo.h ui_widgetbola.h
 ui_darbolbolas.h: darbolbolas.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic darbolbolas.ui -o ui_darbolbolas.h
@@ -484,6 +499,10 @@ ui_dinfobolas.h: dinfobolas.ui \
 ui_dtablabolas.h: dtablabolas.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic dtablabolas.ui -o ui_dtablabolas.h
+
+ui_dtablainfo.h: dtablainfo.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic dtablainfo.ui -o ui_dtablainfo.h
 
 ui_widgetbola.h: widgetbola.ui \
 		/usr/lib/qt5/bin/uic
@@ -532,6 +551,11 @@ dtablabolas.o: dtablabolas.cpp dtablabolas.h \
 		ui_dtablabolas.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dtablabolas.o dtablabolas.cpp
 
+dtablainfo.o: dtablainfo.cpp dtablainfo.h \
+		bola.h \
+		ui_dtablainfo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dtablainfo.o dtablainfo.cpp
+
 main.o: main.cpp mainwindow.h \
 		bola.h \
 		dinformacion.h \
@@ -543,6 +567,8 @@ main.o: main.cpp mainwindow.h \
 		ui_dcontrolbolas.h \
 		widgetbola.h \
 		ui_widgetbola.h \
+		dtablainfo.h \
+		ui_dtablainfo.h \
 		dchart.h \
 		ui_dchart.h \
 		darbolbolas.h \
@@ -560,6 +586,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		ui_dcontrolbolas.h \
 		widgetbola.h \
 		ui_widgetbola.h \
+		dtablainfo.h \
+		ui_dtablainfo.h \
 		dchart.h \
 		ui_dchart.h \
 		darbolbolas.h \
@@ -585,6 +613,9 @@ moc_dinfobolas.o: moc_dinfobolas.cpp
 
 moc_dtablabolas.o: moc_dtablabolas.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dtablabolas.o moc_dtablabolas.cpp
+
+moc_dtablainfo.o: moc_dtablainfo.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dtablainfo.o moc_dtablainfo.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

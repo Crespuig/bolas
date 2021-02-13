@@ -10,6 +10,7 @@
 #include "dinfobolas.h"
 #include "dtablabolas.h"
 #include "dcontrolbolas.h"
+#include "dtablainfo.h"
 #include "dchart.h"
 #include "darbolbolas.h"
 #include <QKeyEvent>
@@ -55,6 +56,7 @@ public:
     DTablaBolas * dTablaBolas;
     DControlBolas * dControlBolas;
     DArbolBolas * dArbolBolas;
+    DTablaInfo * dTablaInfo;
     DChart * dChart;
     
     QAction * accionDInformacion;
@@ -65,6 +67,7 @@ public:
     QAction * accionGuardarPartida;
     QAction * accionCargarPartida;
     QAction * accionDChart;
+    QAction * accionDTablaInfo;
 
 private:
     void performDrag();
@@ -83,6 +86,7 @@ public slots:
     void slotGuardarPartida();
     void slotCargarPartida();
     void slotDChart();
+    void slotDTablaInfo();
 
 signals:
     void senyalBolaNueva(Bola *);

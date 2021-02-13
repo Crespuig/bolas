@@ -46,6 +46,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dControlBolas = NULL;
         dArbolBolas = NULL;
         dChart = NULL;
+        dTablaInfo = NULL;
         drag = NULL;
         trayIcon = NULL;
         menuContextual = NULL;
@@ -136,6 +137,11 @@ void MainWindow::incializarMenus(){
         connect(accionDChart, SIGNAL(triggered()),
                 this, SLOT(slotDChart()));
         menuFichero->addAction(accionDChart);
+
+        accionDTablaInfo = new QAction("Tabla de información", this);
+        connect(accionDTablaInfo, SIGNAL(triggered()),
+                this, SLOT(slotDTablaInfo()));
+        menuFichero->addAction(accionDTablaInfo);
 
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
@@ -472,6 +478,15 @@ void MainWindow::slotCargarPartida(){
         
         
 
+}
+
+void MainWindow::slotDTablaInfo(){
+        if (dTablaInfo == NULL){
+                dTablaInfo = new DTablaInfo(&bolas);
+                
+        }
+        
+        dTablaInfo->show();
 }
 
 
