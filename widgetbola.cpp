@@ -34,6 +34,10 @@ void WidgetBola::slotBotonParar(){
 }
 
 void WidgetBola::slotBotonAcelerar(){
+    if(miBola->velX == 0 && miBola->velY == 0){
+        miBola->velX = 1;
+        miBola->velY = 1;
+    }
     miBola->velX = miBola->velX * 1.05;
     miBola->velY = miBola->velX * 1.05;
 }
