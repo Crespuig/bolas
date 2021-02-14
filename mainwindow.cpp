@@ -481,7 +481,10 @@ void MainWindow::slotCargarPartida(){
 
                 QString nuevoNombre = objetoBola["Bola "].toString();
 
-                Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nombreNuevaBola);       
+                Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nombreNuevaBola);  
+                nb->vida = vidaNuevaBola;     
+                nb->colision = colisionNuevaBola;
+                nb->colisionParedes = colisionParedesNuevaBola;
 
                 bolas.append(nb);
 
@@ -509,6 +512,8 @@ void MainWindow::slotCargarPartida(){
 
         Bola *nbJugador = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nombreNuevaBola);       
         nbJugador->vida = vidaNuevaBola;
+        nbJugador->colision = colisionNuevaBola;
+        nbJugador->colisionParedes = colisionParedesNuevaBola;
 
         QImage imagenNB;
         //leer el elemento json y convertirlo
