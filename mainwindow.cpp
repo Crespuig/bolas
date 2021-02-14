@@ -481,7 +481,7 @@ void MainWindow::slotCargarPartida(){
 
                 QString nuevoNombre = objetoBola["Bola "].toString();
 
-                Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nuevoNombre);       
+                Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nombreNuevaBola);       
 
                 bolas.append(nb);
 
@@ -495,7 +495,7 @@ void MainWindow::slotCargarPartida(){
                 nb->imagen = imagenNB;
         }
 
-        /*QJsonObject objetoBolaJugador = jsonPrincipal["jugador"].toObject();
+        QJsonObject objetoBolaJugador = jsonPrincipal["jugador"].toObject();
         float posXNuevaBola = objetoBolaJugador["posX"].toDouble();
         float velXNuevaBola = objetoBolaJugador["velX"].toDouble();
         float posYNuevaBola = objetoBolaJugador["posY"].toDouble();
@@ -505,11 +505,10 @@ void MainWindow::slotCargarPartida(){
         int colisionParedesNuevaBola = objetoBolaJugador["colisionParedes"].toDouble();
         QString nombreNuevaBola = objetoBolaJugador["nombre"].toString();
 
-        QString nuevoNombre = objetoBolaJugador["Bola "].toString();
+        //QString nuevoNombre = objetoBolaJugador["Bola "].toString();
 
-        Bola *nbJugador = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nuevoNombre);       
-
-        bolas.append(nbJugador);
+        Bola *nbJugador = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nombreNuevaBola);       
+        nbJugador->vida = vidaNuevaBola;
 
         QImage imagenNB;
         //leer el elemento json y convertirlo
@@ -518,10 +517,10 @@ void MainWindow::slotCargarPartida(){
         byteArray = QByteArray::fromBase64(byteArray, QByteArray::Base64Encoding);
         QBuffer buffer(&byteArray);
         imagenNB.loadFromData(byteArray, "PNG");
-        nbJugador->imagen = imagenNB;*/
+        nbJugador->imagen = imagenNB;
         
         
-        //bolaJugador = nbJugador;
+        bolaJugador = nbJugador;
 
 }
 
