@@ -50,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         drag = NULL;
         trayIcon = NULL;
         menuContextual = NULL;
+        dInfoHijas = NULL;
 
         if ( QSystemTrayIcon::isSystemTrayAvailable()  == true ) {
                 trayIcon = new QSystemTrayIcon(this);
@@ -142,6 +143,11 @@ void MainWindow::incializarMenus(){
         connect(accionDTablaInfo, SIGNAL(triggered()),
                 this, SLOT(slotDTablaInfo()));
         menuFichero->addAction(accionDTablaInfo);
+
+        accionDInfoHijas = new QAction("Información hijas", this);
+        connect(accionDInfoHijas, SIGNAL(triggered()),
+                this, SLOT(slotDInfoHijas()));
+        menuFichero->addAction(accionDInfoHijas);
 
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
@@ -487,6 +493,15 @@ void MainWindow::slotDTablaInfo(){
         }
         
         dTablaInfo->show();
+}
+
+void MainWindow::slotDInfoHijas(){
+        if (dInfoHijas == NULL){
+                dInfoHijas = new DInfoHijas(&bolas);
+
+        }
+        
+        dInfoHijas->show();
 }
 
 

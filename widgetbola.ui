@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>171</width>
-    <height>111</height>
+    <width>663</width>
+    <height>353</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="botonColor">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>0</x>
      <y>10</y>
      <width>89</width>
      <height>25</height>
@@ -29,14 +29,24 @@
   <widget class="QPushButton" name="botonParar">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>50</y>
+     <x>0</x>
+     <y>40</y>
      <width>89</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
     <string>Parar</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tablaInfoHijas">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>10</y>
+     <width>551</width>
+     <height>311</height>
+    </rect>
    </property>
   </widget>
  </widget>

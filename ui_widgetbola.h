@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,18 +25,22 @@ class Ui_WidgetBola
 public:
     QPushButton *botonColor;
     QPushButton *botonParar;
+    QTableView *tablaInfoHijas;
 
     void setupUi(QWidget *WidgetBola)
     {
         if (WidgetBola->objectName().isEmpty())
             WidgetBola->setObjectName(QStringLiteral("WidgetBola"));
-        WidgetBola->resize(171, 111);
+        WidgetBola->resize(663, 353);
         botonColor = new QPushButton(WidgetBola);
         botonColor->setObjectName(QStringLiteral("botonColor"));
-        botonColor->setGeometry(QRect(40, 10, 89, 25));
+        botonColor->setGeometry(QRect(0, 10, 89, 25));
         botonParar = new QPushButton(WidgetBola);
         botonParar->setObjectName(QStringLiteral("botonParar"));
-        botonParar->setGeometry(QRect(40, 50, 89, 25));
+        botonParar->setGeometry(QRect(0, 40, 89, 25));
+        tablaInfoHijas = new QTableView(WidgetBola);
+        tablaInfoHijas->setObjectName(QStringLiteral("tablaInfoHijas"));
+        tablaInfoHijas->setGeometry(QRect(100, 10, 551, 311));
 
         retranslateUi(WidgetBola);
 
