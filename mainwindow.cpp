@@ -499,6 +499,9 @@ void MainWindow::slotDInfoHijas(){
         if (dInfoHijas == NULL){
                 dInfoHijas = new DInfoHijas(&bolas);
 
+                connect(this, SIGNAL(senyalBolaNueva(Bola *)),
+                dInfoHijas, SLOT(slotBolaNueva(Bola *)));
+
         }
         
         dInfoHijas->show();
