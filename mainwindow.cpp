@@ -399,6 +399,7 @@ void MainWindow::slotGuardarPartida(){
         jsonJugador["colisiones"] = bolaJugador->colision;
         jsonJugador["colisionesPared"] = bolaJugador->colisionParedes;
         jsonJugador["nombre"] = bolaJugador->nombre;
+        jsonJugador["padre"] = bolaJugador->nombre;
 
 
         jsonPrincipal["jugador"] = jsonJugador;
@@ -415,6 +416,9 @@ void MainWindow::slotGuardarPartida(){
                 bolaJson["colisiones"] = b->colision;
                 bolaJson["colisionesPared"] = b->colisionParedes;
                 bolaJson["nombre"] = b->nombre;
+                bolaJson["padre"] = "NULL";
+                if(b->padre != NULL)
+                        bolaJson["padre"] = b->padre->nombre;
 
                 //guardar la imagen
                 QImage img = b->imagen;
@@ -478,13 +482,21 @@ void MainWindow::slotCargarPartida(){
                 int colisionNuevaBola = objetoBola["colision"].toDouble();
                 int colisionParedesNuevaBola = objetoBola["colisionParedes"].toDouble();
                 QString nombreNuevaBola = objetoBola["nombre"].toString();
+                QString nombrePadre = objetoBola["padre"].toString();
 
-                QString nuevoNombre = objetoBola["Bola "].toString();
+                //QString nuevoNombre = objetoBola["Bola "].toString();
 
                 Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nombreNuevaBola);  
                 nb->vida = vidaNuevaBola;     
                 nb->colision = colisionNuevaBola;
                 nb->colisionParedes = colisionParedesNuevaBola;
+
+                foreach (Bola* b, bolas){
+                        if(nombrePadre == b->nombre){
+                                b->hijas.append(nb);
+                                nb->padre = b;
+                        }
+                }
 
                 bolas.append(nb);
 
