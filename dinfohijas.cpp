@@ -19,5 +19,5 @@ DInfoHijas::DInfoHijas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent
 }
 
 void DInfoHijas::slotBolaNueva(Bola *nueva){
-    tabBolasHijas->addTab(new WidgetBolaTabla(nueva), QString("Bola "));
+    tabBolasHijas->addTab(new WidgetBolaTabla(nueva), QString(nueva->nombre));
 }
