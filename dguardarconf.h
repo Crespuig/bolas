@@ -14,8 +14,13 @@ class DGuardarConf : public QDialog, public Ui::dGuardarConf{
     public:
     DGuardarConf(QWidget * parent = nullptr);
 
+    int alto, ancho;
+
     public slots:
-       
+       void slotEnviarGuardar();
+
+    signals:
+        void guardarEsto(int, int);
 
 };
 

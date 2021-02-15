@@ -566,13 +566,25 @@ void MainWindow::slotDInfoHijas(){
         dInfoHijas->show();
 }
 
-void MainWindow::slotGuardarConfiguracion(){
+void MainWindow::slotGuardarConfiguracion(int gAlto, int gAncho){
+        
+
         QJsonObject jsonPrincipal;
 
         QJsonObject jsonConfiguracion;
 
-        jsonConfiguracion["alto"] = this->height();
-        jsonConfiguracion["ancho"] = this->width();
+        if (gAlto == 1){
+                jsonConfiguracion["alto"] = this->height();
+        }else{
+                jsonConfiguracion["alto"] = altoInicio;
+        }
+
+        if (gAncho == 1){
+                jsonConfiguracion["ancho"] = this->width();
+        }else{
+                jsonConfiguracion["ancho"] = anchoInicio;
+        }
+        
 
         jsonPrincipal["configuracion"] = jsonConfiguracion;
 
@@ -586,11 +598,17 @@ void MainWindow::slotGuardarConfiguracion(){
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){
+       
         if (dGuardarConf == NULL){
                 dGuardarConf = new DGuardarConf();
+
+                connect(dGuardarConf, SIGNAL(guardarEsto(int, int)),
+                        this, SLOT(slotGuardarConfiguracion(int, int)));
         }
         
         dGuardarConf->exec();
+
+        
 }
 
 void MainWindow::slotCargarConfiguracion(){

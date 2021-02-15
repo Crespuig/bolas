@@ -100,7 +100,7 @@ public slots:
     void slotDChart();
     void slotDTablaInfo();
     void slotDInfoHijas();
-    void slotGuardarConfiguracion();
+    void slotGuardarConfiguracion(int, int);
     void slotCargarConfiguracion();
 
 signals:
