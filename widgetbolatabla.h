@@ -8,9 +8,6 @@
 #include <ui_widgetbolatabla.h>
 #include <QString>
 #include <QTimer>
-#include <QComboBox>
-#include <QFrame>
-#include <QCheckBox>
 
 class WidgetBolaTabla : public QWidget, public Ui::widgetBolaTabla{
     Q_OBJECT

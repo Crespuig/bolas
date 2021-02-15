@@ -18,6 +18,7 @@
 #include <QDrag>
 #include <QSystemTrayIcon>
 #include <QChartView>
+#include <QCloseEvent>
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -32,6 +33,7 @@ public:
     void mousePressEvent(QMouseEvent *evento);
     void mouseReleaseEvent(QMouseEvent * evento);
     void mouseMoveEvent(QMouseEvent *event);
+    void closeEvent(QCloseEvent *event);
 
 
     Bola bola;
@@ -46,6 +48,10 @@ public:
     Bola * bolaJugador;
     QDrag *drag;
     QSystemTrayIcon *trayIcon;
+
+    int alto = 800;
+    int ancho = 600;
+    int altoInicio, anchoInicio;
 
     void inicializarBolas();
     void incializarMenus();
@@ -71,6 +77,7 @@ public:
     QAction * accionDChart;
     QAction * accionDTablaInfo;
     QAction * accionDInfoHijas;
+    
 
 private:
     void performDrag();
@@ -91,6 +98,8 @@ public slots:
     void slotDChart();
     void slotDTablaInfo();
     void slotDInfoHijas();
+    void slotGuardarConfiguracion();
+    void slotCargarConfiguracion();
 
 signals:
     void senyalBolaNueva(Bola *);
