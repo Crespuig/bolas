@@ -79,6 +79,7 @@ public:
     QAction * accionDChart;
     QAction * accionDTablaInfo;
     QAction * accionDInfoHijas;
+    QAction * accionCargarConfiguracion;
     
 
 private:

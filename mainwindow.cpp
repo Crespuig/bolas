@@ -153,6 +153,11 @@ void MainWindow::incializarMenus(){
                 this, SLOT(slotDInfoHijas()));
         menuFichero->addAction(accionDInfoHijas);
 
+        accionCargarConfiguracion = new QAction("Cargar configuración", this);
+        connect(accionCargarConfiguracion, SIGNAL(triggered()),
+                this, SLOT(slotCargarConfiguracion()));
+        menuFichero->addAction(accionCargarConfiguracion);
+
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
         menuContextual->addAction(accionDInfoBolas);
@@ -612,15 +617,8 @@ void MainWindow::closeEvent(QCloseEvent *event){
 }
 
 void MainWindow::slotCargarConfiguracion(){
-        for (int i = 0; i < bolas.size(); i++){
-                Bola * pb = bolas[i];
-                delete pb;
-        }
-        
-        bolas.clear(); 
-
         //Siempre igual
-        QFile loadFile(QStringLiteral("save.json"));
+        QFile loadFile(QStringLiteral("configuracion.json"));
         if (!loadFile.open(QIODevice::ReadOnly)){
                 return;
         }
@@ -629,84 +627,11 @@ void MainWindow::slotCargarConfiguracion(){
         QJsonDocument readDoc(QJsonDocument::fromJson(savedData));
         QJsonObject jsonPrincipal = readDoc.object();
 
-        if (!(jsonPrincipal.contains("bolas") && jsonPrincipal["bolas"].isArray())){
-                qDebug()<< "Cargar partida: bolas no encontradas en el archivo";
-                return;
-        }
+        QJsonObject objetoConfiguracion = jsonPrincipal["configuracion"].toObject();
+        int altoPantalla = objetoConfiguracion["alto"].toDouble();
+        int anchoPantalla = objetoConfiguracion["ancho"].toDouble();
 
-        /*QJsonValue valorJson = jsonPrincipal["bolas"];
-        AJsonArray = valorJson.toArray();*/
-
-        QJsonArray arrayBolas = jsonPrincipal["bolas"].toArray();
-
-       
-     
-        for (int i = 0; i < arrayBolas.size(); i++){
-                QJsonObject objetoBola = arrayBolas[i].toObject();
-                float posXNuevaBola = objetoBola["posX"].toDouble();
-                float velXNuevaBola = objetoBola["velX"].toDouble();
-                float posYNuevaBola = objetoBola["posY"].toDouble();
-                float velYNuevaBola = objetoBola["velY"].toDouble();
-                int vidaNuevaBola = objetoBola["vida"].toDouble();
-                int colisionNuevaBola = objetoBola["colision"].toDouble();
-                int colisionParedesNuevaBola = objetoBola["colisionParedes"].toDouble();
-                QString nombreNuevaBola = objetoBola["nombre"].toString();
-                QString nombrePadre = objetoBola["padre"].toString();
-
-                //QString nuevoNombre = objetoBola["Bola "].toString();
-
-                Bola *nb = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nombreNuevaBola);  
-                nb->vida = vidaNuevaBola;     
-                nb->colision = colisionNuevaBola;
-                nb->colisionParedes = colisionParedesNuevaBola;
-
-                foreach (Bola* b, bolas){
-                        if(nombrePadre == b->nombre){
-                                b->hijas.append(nb);
-                                nb->padre = b;
-                        }
-                }
-
-                bolas.append(nb);
-
-                QImage imagenNB;
-                //leer el elemento json y convertirlo
-                QString imgBase64 = objetoBola["imagen"].toString();
-                QByteArray byteArray = imgBase64.toLatin1();
-                byteArray = QByteArray::fromBase64(byteArray, QByteArray::Base64Encoding);
-                QBuffer buffer(&byteArray);
-                imagenNB.loadFromData(byteArray, "PNG");
-                nb->imagen = imagenNB;
-        }
-
-        QJsonObject objetoBolaJugador = jsonPrincipal["jugador"].toObject();
-        float posXNuevaBola = objetoBolaJugador["posX"].toDouble();
-        float velXNuevaBola = objetoBolaJugador["velX"].toDouble();
-        float posYNuevaBola = objetoBolaJugador["posY"].toDouble();
-        float velYNuevaBola = objetoBolaJugador["velY"].toDouble();
-        int vidaNuevaBola = objetoBolaJugador["vida"].toDouble();
-        int colisionNuevaBola = objetoBolaJugador["colision"].toDouble();
-        int colisionParedesNuevaBola = objetoBolaJugador["colisionParedes"].toDouble();
-        QString nombreNuevaBola = objetoBolaJugador["nombre"].toString();
-
-        //QString nuevoNombre = objetoBolaJugador["Bola "].toString();
-
-        Bola *nbJugador = new Bola(posXNuevaBola,posYNuevaBola,velXNuevaBola,velYNuevaBola, nombreNuevaBola);       
-        nbJugador->vida = vidaNuevaBola;
-        nbJugador->colision = colisionNuevaBola;
-        nbJugador->colisionParedes = colisionParedesNuevaBola;
-
-        QImage imagenNB;
-        //leer el elemento json y convertirlo
-        QString imgBase64 = objetoBolaJugador["imagen"].toString();
-        QByteArray byteArray = imgBase64.toLatin1();
-        byteArray = QByteArray::fromBase64(byteArray, QByteArray::Base64Encoding);
-        QBuffer buffer(&byteArray);
-        imagenNB.loadFromData(byteArray, "PNG");
-        nbJugador->imagen = imagenNB;
-        
-        
-        bolaJugador = nbJugador;
+        resize(anchoPantalla, altoPantalla);
 
 }
 
