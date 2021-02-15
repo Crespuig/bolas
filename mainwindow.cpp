@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         trayIcon = NULL;
         menuContextual = NULL;
         dInfoHijas = NULL;
+        dGuardarConf = NULL;
 
         if ( QSystemTrayIcon::isSystemTrayAvailable()  == true ) {
                 trayIcon = new QSystemTrayIcon(this);
@@ -585,7 +586,11 @@ void MainWindow::slotGuardarConfiguracion(){
 }
 
 void MainWindow::closeEvent(QCloseEvent *event){
-        slotGuardarConfiguracion();
+        if (dGuardarConf == NULL){
+                dGuardarConf = new DGuardarConf();
+        }
+        
+        dGuardarConf->exec();
 }
 
 void MainWindow::slotCargarConfiguracion(){

@@ -19,6 +19,7 @@
 #include <QSystemTrayIcon>
 #include <QChartView>
 #include <QCloseEvent>
+#include "dguardarconf.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -66,6 +67,7 @@ public:
     DTablaInfo * dTablaInfo;
     DChart * dChart;
     DInfoHijas * dInfoHijas;
+    DGuardarConf * dGuardarConf;
     
     QAction * accionDInformacion;
     QAction * accionDInfoBolas;
