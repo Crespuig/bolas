@@ -9,7 +9,9 @@
 #include <QMimeData>
 #include <QImage>
 #include <bola.h>
-
+#include <QComboBox>
+#include <QFrame>
+#include <QCheckBox>
 
 
 WidgetBolaTabla::WidgetBolaTabla(Bola * bola, QWidget * parent) : QWidget(parent), miBola(bola){
@@ -21,6 +23,11 @@ WidgetBolaTabla::WidgetBolaTabla(Bola * bola, QWidget * parent) : QWidget(parent
     temporizador->start();
 
     ModeloBolasHijas *m = new ModeloBolasHijas(&bola->hijas);
+
+    foreach(Bola * b, bola->hijas){
+        QVariant bolaIndex = bola->hijas.indexOf(b);
+        listaHijas->addItem(b->nombre, bolaIndex);
+    }
 
     tablaHijas->setModel(m);
 
