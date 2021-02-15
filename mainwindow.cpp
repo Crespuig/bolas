@@ -286,7 +286,7 @@ void MainWindow::slotRepintar(){
                                                if(numeroRandom < 18){
                                                         Bola *nueva = new Bola(bolas.at(i)->posicionX+20, bolas.at(i)->posicionY-20,
                                                                 ((4 + random()%50 / 50.1) - 0.5), ((4 + random()%50 / 50.1) - 0.5), 
-                                                                QString ("Bola hija de ") + QString::number(i));
+                                                                QString ("Bola ") + QString::number(bolas.size() + 1));
                                                         nueva->padre = bolas.at(i);
                                                         bolas.at(i)->hijas.append(nueva);
                                                         

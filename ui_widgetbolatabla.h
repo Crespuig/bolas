@@ -40,10 +40,10 @@ public:
         tablaHijas->setGeometry(QRect(15, 11, 1011, 391));
         checkBoxHijas = new QCheckBox(widgetBolaTabla);
         checkBoxHijas->setObjectName(QStringLiteral("checkBoxHijas"));
-        checkBoxHijas->setGeometry(QRect(280, 560, 92, 23));
+        checkBoxHijas->setGeometry(QRect(330, 500, 92, 23));
         listaHijas = new QComboBox(widgetBolaTabla);
         listaHijas->setObjectName(QStringLiteral("listaHijas"));
-        listaHijas->setGeometry(QRect(280, 410, 86, 25));
+        listaHijas->setGeometry(QRect(260, 410, 171, 31));
         frameCoordenadas = new QFrame(widgetBolaTabla);
         frameCoordenadas->setObjectName(QStringLiteral("frameCoordenadas"));
         frameCoordenadas->setGeometry(QRect(440, 410, 361, 181));

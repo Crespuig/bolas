@@ -33,15 +33,15 @@ public:
     {
         if (DinfoHijas->objectName().isEmpty())
             DinfoHijas->setObjectName(QStringLiteral("DinfoHijas"));
-        DinfoHijas->resize(1054, 671);
+        DinfoHijas->resize(1058, 752);
         buttonBox = new QDialogButtonBox(DinfoHijas);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setGeometry(QRect(680, 630, 341, 32));
+        buttonBox->setGeometry(QRect(710, 710, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tabBolasHijas = new QTabWidget(DinfoHijas);
         tabBolasHijas->setObjectName(QStringLiteral("tabBolasHijas"));
-        tabBolasHijas->setGeometry(QRect(10, 10, 1011, 611));
+        tabBolasHijas->setGeometry(QRect(10, 10, 1041, 691));
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         tabBolasHijas->addTab(tab, QString());
