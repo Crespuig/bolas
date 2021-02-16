@@ -20,6 +20,8 @@
 #include <QChartView>
 #include <QCloseEvent>
 #include "dguardarconf.h"
+#include "dNombresBolas.h"
+#include "dtablaexamen.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -68,6 +70,8 @@ public:
     DChart * dChart;
     DInfoHijas * dInfoHijas;
     DGuardarConf * dGuardarConf;
+    DNombresBolas * dNombresBolas;
+    DTablaExamen * dTablaExamen;
     
     QAction * accionDInformacion;
     QAction * accionDInfoBolas;
@@ -80,7 +84,8 @@ public:
     QAction * accionDTablaInfo;
     QAction * accionDInfoHijas;
     QAction * accionCargarConfiguracion;
-    
+    QAction * accionDNombresBolas;
+    QAction * accionDTablaExamen;
 
 private:
     void performDrag();
@@ -103,6 +108,8 @@ public slots:
     void slotDInfoHijas();
     void slotGuardarConfiguracion(int, int);
     void slotCargarConfiguracion();
+    void slotDNombresBolas();
+    void slotDTablaExamen();
 
 signals:
     void senyalBolaNueva(Bola *);

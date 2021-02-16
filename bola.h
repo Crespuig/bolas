@@ -32,6 +32,8 @@ public:
     Bola * padre;
     QVector<Bola*> hijas;
 
+    QStringList lista={"Lola","Lole","Loli","Lolo"};
+
     QColor color = QColor(random()%256, random()%256, random()%256);
      
     static const int diametro = 50;

@@ -55,6 +55,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         menuContextual = NULL;
         dInfoHijas = NULL;
         dGuardarConf = NULL;
+        dNombresBolas = NULL;
+        dTablaExamen = NULL;
 
         if ( QSystemTrayIcon::isSystemTrayAvailable()  == true ) {
                 trayIcon = new QSystemTrayIcon(this);
@@ -157,6 +159,19 @@ void MainWindow::incializarMenus(){
         connect(accionCargarConfiguracion, SIGNAL(triggered()),
                 this, SLOT(slotCargarConfiguracion()));
         menuFichero->addAction(accionCargarConfiguracion);
+
+        QMenu * menuNombresBolas = menuBar()->addMenu("Nombres bolas");
+        accionDNombresBolas = new QAction("Nombres bolas", this);
+        accionDNombresBolas->setStatusTip("Nombres bolas");
+        accionDNombresBolas->setToolTip("Nombres bolas");
+        connect(accionDNombresBolas, SIGNAL(triggered()),
+                this, SLOT(slotDNombresBolas()));
+        menuNombresBolas->addAction(accionDNombresBolas);
+
+        accionDTablaExamen = new QAction("Tabla examen", this);
+        connect(accionDTablaExamen, SIGNAL(triggered()),
+                this, SLOT(slotDTablaExamen()));
+        menuNombresBolas->addAction(accionDTablaExamen);
 
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
@@ -633,6 +648,24 @@ void MainWindow::slotCargarConfiguracion(){
 
         resize(anchoPantalla, altoPantalla);
 
+}
+
+void MainWindow::slotDNombresBolas(){
+        if (dNombresBolas == NULL){
+                dNombresBolas = new DNombresBolas(&bolas);
+                
+        }
+        
+        dNombresBolas->show();
+}
+
+void MainWindow::slotDTablaExamen(){
+        if (dTablaExamen == NULL){
+                dTablaExamen = new DTablaExamen(&bolas);
+                
+        }
+        
+        dTablaExamen->show();
 }
 
 

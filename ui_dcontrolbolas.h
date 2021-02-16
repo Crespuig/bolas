@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dcontrolbolas.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.5
+** Created by: Qt User Interface Compiler version 5.12.8
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,13 +10,10 @@
 #define UI_DCONTROLBOLAS_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
@@ -38,33 +35,33 @@ public:
     void setupUi(QDialog *DControlBolas)
     {
         if (DControlBolas->objectName().isEmpty())
-            DControlBolas->setObjectName(QStringLiteral("DControlBolas"));
+            DControlBolas->setObjectName(QString::fromUtf8("DControlBolas"));
         DControlBolas->resize(573, 408);
         buttonBox = new QDialogButtonBox(DControlBolas);
-        buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
         buttonBox->setGeometry(QRect(220, 370, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tabBolas = new QTabWidget(DControlBolas);
-        tabBolas->setObjectName(QStringLiteral("tabBolas"));
+        tabBolas->setObjectName(QString::fromUtf8("tabBolas"));
         tabBolas->setGeometry(QRect(10, 10, 541, 311));
         tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
+        tab->setObjectName(QString::fromUtf8("tab"));
         tabBolas->addTab(tab, QString());
         tab_2 = new QWidget();
-        tab_2->setObjectName(QStringLiteral("tab_2"));
+        tab_2->setObjectName(QString::fromUtf8("tab_2"));
         tabBolas->addTab(tab_2, QString());
         botonPararBola = new QPushButton(DControlBolas);
-        botonPararBola->setObjectName(QStringLiteral("botonPararBola"));
+        botonPararBola->setObjectName(QString::fromUtf8("botonPararBola"));
         botonPararBola->setGeometry(QRect(10, 340, 89, 25));
         checkTodas = new QCheckBox(DControlBolas);
-        checkTodas->setObjectName(QStringLiteral("checkTodas"));
+        checkTodas->setObjectName(QString::fromUtf8("checkTodas"));
         checkTodas->setGeometry(QRect(110, 340, 92, 23));
         botonAcelerar = new QPushButton(DControlBolas);
-        botonAcelerar->setObjectName(QStringLiteral("botonAcelerar"));
+        botonAcelerar->setObjectName(QString::fromUtf8("botonAcelerar"));
         botonAcelerar->setGeometry(QRect(470, 330, 89, 25));
         botonFrenar = new QPushButton(DControlBolas);
-        botonFrenar->setObjectName(QStringLiteral("botonFrenar"));
+        botonFrenar->setObjectName(QString::fromUtf8("botonFrenar"));
         botonFrenar->setGeometry(QRect(370, 330, 89, 25));
 
         retranslateUi(DControlBolas);
@@ -76,13 +73,13 @@ public:
 
     void retranslateUi(QDialog *DControlBolas)
     {
-        DControlBolas->setWindowTitle(QApplication::translate("DControlBolas", "Dialog", Q_NULLPTR));
-        tabBolas->setTabText(tabBolas->indexOf(tab), QApplication::translate("DControlBolas", "Tab 1", Q_NULLPTR));
-        tabBolas->setTabText(tabBolas->indexOf(tab_2), QApplication::translate("DControlBolas", "Tab 2", Q_NULLPTR));
-        botonPararBola->setText(QApplication::translate("DControlBolas", "Parar bola", Q_NULLPTR));
-        checkTodas->setText(QApplication::translate("DControlBolas", "CheckBox", Q_NULLPTR));
-        botonAcelerar->setText(QApplication::translate("DControlBolas", "Acelerar", Q_NULLPTR));
-        botonFrenar->setText(QApplication::translate("DControlBolas", "Frenar", Q_NULLPTR));
+        DControlBolas->setWindowTitle(QApplication::translate("DControlBolas", "Dialog", nullptr));
+        tabBolas->setTabText(tabBolas->indexOf(tab), QApplication::translate("DControlBolas", "Tab 1", nullptr));
+        tabBolas->setTabText(tabBolas->indexOf(tab_2), QApplication::translate("DControlBolas", "Tab 2", nullptr));
+        botonPararBola->setText(QApplication::translate("DControlBolas", "Parar bola", nullptr));
+        checkTodas->setText(QApplication::translate("DControlBolas", "CheckBox", nullptr));
+        botonAcelerar->setText(QApplication::translate("DControlBolas", "Acelerar", nullptr));
+        botonFrenar->setText(QApplication::translate("DControlBolas", "Frenar", nullptr));
     } // retranslateUi
 
 };
