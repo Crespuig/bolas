@@ -10,7 +10,7 @@ DGuardarConf::DGuardarConf(QWidget * parent) : QDialog(parent){
     setupUi(this);
 
     alto = 0;
-    ancho = 1;
+    ancho = 0;
 
     connect(this, SIGNAL(accepted()),
         this, SLOT(slotEnviarGuardar()));
