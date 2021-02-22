@@ -13,6 +13,14 @@ Onda::Onda(){
 
 WidgetOndas::WidgetOndas(int ancho, int alto, QWidget * parent) : anchoPrincipal(ancho), altoPrincipal(alto), QWidget(parent){
 
+    temporizador = new QTimer();
+    temporizador->setInterval(500);
+    temporizador->setSingleShot(false);
+    temporizador->start();
+
+    connect(temporizador, SIGNAL(timeout()),
+        this, SLOT(slotTemporizador()));
+
     nuevaOnda(10, 10);
     nuevaOnda(20, 20);
     nuevaOnda(30, 30);
@@ -25,7 +33,7 @@ WidgetOndas::WidgetOndas(int ancho, int alto, QWidget * parent) : anchoPrincipal
 
 void WidgetOndas::paintEvent(QPaintEvent * event){
     QPainter pintor(this);
-    pintor.drawEllipse(20,20,10,10);
+    //pintor.drawEllipse(20,20,10,10);
 
     for (int i = 0; i < ondas.size(); i++){
         pintor.drawEllipse(ondas[i].posX, ondas[i].posY, 4 + 2 * ondas[i].ciclos, 4 + 2 * ondas[i].ciclos);
@@ -48,6 +56,12 @@ void WidgetOndas::nuevaOnda(int x, int y){
     Onda nueva(xDibujo, yDibujo);
 
     ondas.append(nueva);
+}
+
+void WidgetOndas::slotTemporizador(){
+    
+    update();
+
 }
 
 

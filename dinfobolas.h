@@ -30,6 +30,11 @@ Q_OBJECT
 
         void nuevaOnda(int x, int y);
 
+        QTimer *temporizador;
+
+    public slots:
+        void slotTemporizador();    
+
 };
 
 class DInfoBolas : public QDialog, public Ui::DInfoBolas{
