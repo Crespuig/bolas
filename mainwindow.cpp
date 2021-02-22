@@ -305,7 +305,10 @@ void MainWindow::slotRepintar(){
                                if(bolas.at(i)->choca(bolas.at(j))){
                                        bolas.at(i)->vida--;
                                        bolas.at(j)->vida--;
-                                       if (bolas.size() < 25){
+
+                                        //emit nuevaColision(bolas->at(i).posicionX, bolas->at(i).posicionY);
+
+                                        if (bolas.size() < 25){
                                                int numeroRandom = random()%100;
                                                if(numeroRandom < 18){
                                                         Bola *nueva = new Bola(bolas.at(i)->posicionX+20, bolas.at(i)->posicionY-20,
@@ -317,7 +320,7 @@ void MainWindow::slotRepintar(){
                                                         bolas.append(nueva);
                                                         emit senyalBolaNueva(nueva);
                                                }       
-                                       }
+                                        }
                                }
                        }
                 }
