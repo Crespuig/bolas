@@ -14,6 +14,7 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 
@@ -26,15 +27,17 @@ public:
     QListWidget *listaBolas;
     QLabel *txtFrecuencia;
     QComboBox *listaFrecuencia;
+    QFrame *frameColisiones;
+    QLabel *label;
 
     void setupUi(QDialog *DInfoBolas)
     {
         if (DInfoBolas->objectName().isEmpty())
             DInfoBolas->setObjectName(QString::fromUtf8("DInfoBolas"));
-        DInfoBolas->resize(524, 452);
+        DInfoBolas->resize(862, 644);
         buttonBox = new QDialogButtonBox(DInfoBolas);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setGeometry(QRect(170, 410, 341, 32));
+        buttonBox->setGeometry(QRect(480, 600, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         listaBolas = new QListWidget(DInfoBolas);
@@ -42,10 +45,18 @@ public:
         listaBolas->setGeometry(QRect(10, 10, 501, 271));
         txtFrecuencia = new QLabel(DInfoBolas);
         txtFrecuencia->setObjectName(QString::fromUtf8("txtFrecuencia"));
-        txtFrecuencia->setGeometry(QRect(10, 300, 191, 17));
+        txtFrecuencia->setGeometry(QRect(570, 20, 191, 17));
         listaFrecuencia = new QComboBox(DInfoBolas);
         listaFrecuencia->setObjectName(QString::fromUtf8("listaFrecuencia"));
-        listaFrecuencia->setGeometry(QRect(210, 300, 86, 25));
+        listaFrecuencia->setGeometry(QRect(770, 20, 86, 25));
+        frameColisiones = new QFrame(DInfoBolas);
+        frameColisiones->setObjectName(QString::fromUtf8("frameColisiones"));
+        frameColisiones->setGeometry(QRect(20, 310, 801, 281));
+        frameColisiones->setFrameShape(QFrame::StyledPanel);
+        frameColisiones->setFrameShadow(QFrame::Raised);
+        label = new QLabel(DInfoBolas);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(60, 290, 81, 16));
 
         retranslateUi(DInfoBolas);
         QObject::connect(buttonBox, SIGNAL(accepted()), DInfoBolas, SLOT(accept()));
@@ -58,6 +69,7 @@ public:
     {
         DInfoBolas->setWindowTitle(QApplication::translate("DInfoBolas", "Dialog", nullptr));
         txtFrecuencia->setText(QApplication::translate("DInfoBolas", "Frecuencia de actualizaci\303\263n", nullptr));
+        label->setText(QApplication::translate("DInfoBolas", "Colisiones", nullptr));
     } // retranslateUi
 
 };
