@@ -45,10 +45,13 @@ class DInfoBolas : public QDialog, public Ui::DInfoBolas{
         QVector <Bola*>*vector;
         QTimer *temporizador;
 
+        WidgetOndas *wo;
+
         QString getInformacionBolas(Bola *bola);
 
     public slots:
         void slotInfoBolas();     
+        void slotOnda(int posX, int posY);
 
 };
 

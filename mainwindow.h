@@ -114,6 +114,7 @@ public slots:
 signals:
     void senyalBolaNueva(Bola *);
     void jugadorChoqued();
+    void senyalnuevaColision(int, int);
 
 };
 

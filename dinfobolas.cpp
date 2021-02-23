@@ -3,6 +3,7 @@
 #include <QString>
 #include <QPainter>
 #include <QHBoxLayout>
+#include <QDebug>
 
 Onda::Onda(int x, int y) : posX(x), posY(y), ciclos(0){
 
@@ -21,12 +22,12 @@ WidgetOndas::WidgetOndas(int ancho, int alto, QWidget * parent) : anchoPrincipal
     connect(temporizador, SIGNAL(timeout()),
         this, SLOT(slotTemporizador()));
 
-    nuevaOnda(10, 10);
+    /*nuevaOnda(10, 10);
     nuevaOnda(20, 20);
     nuevaOnda(30, 30);
     nuevaOnda(40, 40);
     nuevaOnda(50, 50);
-    nuevaOnda(60, 60);
+    nuevaOnda(60, 60);*/
 
 
 }
@@ -69,7 +70,7 @@ DInfoBolas::DInfoBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent
     setupUi(this);
 
     temporizador = new QTimer();
-    temporizador->setInterval(500);
+    temporizador->setInterval(100);
     temporizador->setSingleShot(false);
     temporizador->start();
 
@@ -78,8 +79,9 @@ DInfoBolas::DInfoBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent
     connect(temporizador, SIGNAL(timeout()),
         this, SLOT(slotInfoBolas()));
 
+    
     QHBoxLayout * layout = new QHBoxLayout();
-    WidgetOndas *wo = new WidgetOndas(300, 300);
+    wo = new WidgetOndas(300, 300);
     layout->addWidget(wo);
     frameColisiones->setLayout(layout);
 }
@@ -100,4 +102,9 @@ void DInfoBolas::slotInfoBolas(){
         listaBolas->addItem(getInformacionBolas(vector->at(i)));
     }
     
+}
+
+void DInfoBolas::slotOnda(int posX, int posY){
+    //qDebug()<< "hola";
+    wo->nuevaOnda(posX, posY);
 }
