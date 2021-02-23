@@ -85,30 +85,30 @@ static const uint qt_meta_data_MainWindow[] = {
  // signals: name, argc, parameters, tag, flags
        1,    1,  109,    2, 0x06 /* Public */,
        4,    0,  112,    2, 0x06 /* Public */,
-       5,    2,  113,    2, 0x06 /* Public */,
+       5,    3,  113,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,  118,    2, 0x0a /* Public */,
-       7,    0,  119,    2, 0x0a /* Public */,
-       8,    0,  120,    2, 0x0a /* Public */,
-       9,    0,  121,    2, 0x0a /* Public */,
-      10,    0,  122,    2, 0x0a /* Public */,
-      11,    0,  123,    2, 0x0a /* Public */,
-      12,    0,  124,    2, 0x0a /* Public */,
-      13,    0,  125,    2, 0x0a /* Public */,
-      14,    0,  126,    2, 0x0a /* Public */,
-      15,    0,  127,    2, 0x0a /* Public */,
-      16,    0,  128,    2, 0x0a /* Public */,
-      17,    0,  129,    2, 0x0a /* Public */,
-      18,    2,  130,    2, 0x0a /* Public */,
-      19,    0,  135,    2, 0x0a /* Public */,
-      20,    0,  136,    2, 0x0a /* Public */,
-      21,    0,  137,    2, 0x0a /* Public */,
+       6,    0,  120,    2, 0x0a /* Public */,
+       7,    0,  121,    2, 0x0a /* Public */,
+       8,    0,  122,    2, 0x0a /* Public */,
+       9,    0,  123,    2, 0x0a /* Public */,
+      10,    0,  124,    2, 0x0a /* Public */,
+      11,    0,  125,    2, 0x0a /* Public */,
+      12,    0,  126,    2, 0x0a /* Public */,
+      13,    0,  127,    2, 0x0a /* Public */,
+      14,    0,  128,    2, 0x0a /* Public */,
+      15,    0,  129,    2, 0x0a /* Public */,
+      16,    0,  130,    2, 0x0a /* Public */,
+      17,    0,  131,    2, 0x0a /* Public */,
+      18,    2,  132,    2, 0x0a /* Public */,
+      19,    0,  137,    2, 0x0a /* Public */,
+      20,    0,  138,    2, 0x0a /* Public */,
+      21,    0,  139,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, 0x80000000 | 3,    2,    2,    2,
 
  // slots: parameters
     QMetaType::Void,
@@ -139,7 +139,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->senyalBolaNueva((*reinterpret_cast< Bola*(*)>(_a[1]))); break;
         case 1: _t->jugadorChoqued(); break;
-        case 2: _t->senyalnuevaColision((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 2: _t->senyalnuevaColision((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< Bola*(*)>(_a[3]))); break;
         case 3: _t->slotRepintar(); break;
         case 4: _t->slotDInformacion(); break;
         case 5: _t->slotDInfoBolas(); break;
@@ -175,7 +175,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (MainWindow::*)(int , int );
+            using _t = void (MainWindow::*)(int , int , Bola * );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::senyalnuevaColision)) {
                 *result = 2;
                 return;
@@ -238,9 +238,9 @@ void MainWindow::jugadorChoqued()
 }
 
 // SIGNAL 2
-void MainWindow::senyalnuevaColision(int _t1, int _t2)
+void MainWindow::senyalnuevaColision(int _t1, int _t2, Bola * _t3)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP

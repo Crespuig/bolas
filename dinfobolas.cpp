@@ -4,6 +4,7 @@
 #include <QPainter>
 #include <QHBoxLayout>
 #include <QDebug>
+#include <QVariant>
 
 Onda::Onda(int x, int y) : posX(x), posY(y), ciclos(0){
 
@@ -79,20 +80,36 @@ DInfoBolas::DInfoBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent
     connect(temporizador, SIGNAL(timeout()),
         this, SLOT(slotInfoBolas()));
 
+    connect(listaBolas, SIGNAL(itemClicked(QListWidgetItem *)),
+        this, SLOT(slotRecogerBola(QListWidgetItem *)));
+
     
     QHBoxLayout * layout = new QHBoxLayout();
-    wo = new WidgetOndas(300, 300);
+    wo = new WidgetOndas(800, 600);
     layout->addWidget(wo);
     frameColisiones->setLayout(layout);
 }
 
-QString DInfoBolas::getInformacionBolas(Bola *bola){
+QListWidgetItem * DInfoBolas::getInformacionBolas(Bola *bola){
     QString info = " Pos x: " + QString::number(bola->posicionX) + ","
                     " Pos y: " + QString::number(bola->posicionY) + ","
                     " Vel x: " + QString::number(bola->velX) + ","
                     " Vel y: " + QString::number(bola->velY) + ",";
 
-    return info;
+    QListWidgetItem * item = new QListWidgetItem(info);
+    
+
+    for (int i = 0; i < vector->size(); i++){
+        if (vector->at(i) == bola){
+            item->setData(Qt::EditRole, QVariant(i));
+            item->setText(info);
+        }
+            
+    }
+    
+    //qDebug()<<item->text();
+
+    return item;
 }
 
 void DInfoBolas::slotInfoBolas(){
@@ -104,7 +121,14 @@ void DInfoBolas::slotInfoBolas(){
     
 }
 
-void DInfoBolas::slotOnda(int posX, int posY){
-    //qDebug()<< "hola";
-    wo->nuevaOnda(posX, posY);
+void DInfoBolas::slotOnda(int posX, int posY, Bola* bolaRecibida){
+    if (bolaRecibida == bolaSeleccionada){
+        wo->nuevaOnda(posX, posY);
+    }
+    
+   
+}
+
+ void DInfoBolas::slotRecogerBola(QListWidgetItem * item){
+     bolaSeleccionada = vector->at(item->data(Qt::EditRole).toInt());
 }

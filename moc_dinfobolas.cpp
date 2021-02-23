@@ -115,8 +115,8 @@ int WidgetOndas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_DInfoBolas_t {
-    QByteArrayData data[6];
-    char stringdata0[45];
+    QByteArrayData data[9];
+    char stringdata0[84];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -130,11 +130,15 @@ QT_MOC_LITERAL(1, 11, 13), // "slotInfoBolas"
 QT_MOC_LITERAL(2, 25, 0), // ""
 QT_MOC_LITERAL(3, 26, 8), // "slotOnda"
 QT_MOC_LITERAL(4, 35, 4), // "posX"
-QT_MOC_LITERAL(5, 40, 4) // "posY"
+QT_MOC_LITERAL(5, 40, 4), // "posY"
+QT_MOC_LITERAL(6, 45, 5), // "Bola*"
+QT_MOC_LITERAL(7, 51, 15), // "slotRecogerBola"
+QT_MOC_LITERAL(8, 67, 16) // "QListWidgetItem*"
 
     },
     "DInfoBolas\0slotInfoBolas\0\0slotOnda\0"
-    "posX\0posY"
+    "posX\0posY\0Bola*\0slotRecogerBola\0"
+    "QListWidgetItem*"
 };
 #undef QT_MOC_LITERAL
 
@@ -144,7 +148,7 @@ static const uint qt_meta_data_DInfoBolas[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -152,12 +156,14 @@ static const uint qt_meta_data_DInfoBolas[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   24,    2, 0x0a /* Public */,
-       3,    2,   25,    2, 0x0a /* Public */,
+       1,    0,   29,    2, 0x0a /* Public */,
+       3,    3,   30,    2, 0x0a /* Public */,
+       7,    1,   37,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,    4,    5,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, 0x80000000 | 6,    4,    5,    2,
+    QMetaType::Void, 0x80000000 | 8,    2,
 
        0        // eod
 };
@@ -169,7 +175,8 @@ void DInfoBolas::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->slotInfoBolas(); break;
-        case 1: _t->slotOnda((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 1: _t->slotOnda((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< Bola*(*)>(_a[3]))); break;
+        case 2: _t->slotRecogerBola((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -206,13 +213,13 @@ int DInfoBolas::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

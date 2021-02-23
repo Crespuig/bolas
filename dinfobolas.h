@@ -47,11 +47,14 @@ class DInfoBolas : public QDialog, public Ui::DInfoBolas{
 
         WidgetOndas *wo;
 
-        QString getInformacionBolas(Bola *bola);
+        Bola * bolaSeleccionada;
+
+        QListWidgetItem * getInformacionBolas(Bola *bola);
 
     public slots:
         void slotInfoBolas();     
-        void slotOnda(int posX, int posY);
+        void slotOnda(int posX, int posY, Bola*);
+        void slotRecogerBola(QListWidgetItem *);
 
 };
 

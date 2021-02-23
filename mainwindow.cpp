@@ -306,7 +306,7 @@ void MainWindow::slotRepintar(){
                                        bolas.at(i)->vida--;
                                        bolas.at(j)->vida--;
 
-                                        emit senyalnuevaColision(bolas.at(i)->posicionX, bolas.at(i)->posicionY);
+                                        emit senyalnuevaColision(bolas.at(i)->posicionX, bolas.at(i)->posicionY, bolas.at(i));
 
                                         if (bolas.size() < 25){
                                                int numeroRandom = random()%100;
@@ -358,8 +358,8 @@ void MainWindow::slotDInfoBolas(){
         if (dInfoBolas == NULL){
                 dInfoBolas = new DInfoBolas(&bolas);
 
-                connect(this, SIGNAL(senyalnuevaColision(int, int)),
-                dInfoBolas, SLOT(slotOnda(int, int)));
+                connect(this, SIGNAL(senyalnuevaColision(int, int, Bola*)),
+                dInfoBolas, SLOT(slotOnda(int, int, Bola*)));
 
 
         }
