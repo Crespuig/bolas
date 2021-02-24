@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widgetNombreBola.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,10 +10,13 @@
 #define UI_WIDGETNOMBREBOLA_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -44,21 +47,21 @@ public:
     void setupUi(QWidget *WidgetNombreBola)
     {
         if (WidgetNombreBola->objectName().isEmpty())
-            WidgetNombreBola->setObjectName(QString::fromUtf8("WidgetNombreBola"));
+            WidgetNombreBola->setObjectName(QStringLiteral("WidgetNombreBola"));
         WidgetNombreBola->resize(270, 341);
         verticalLayout_2 = new QVBoxLayout(WidgetNombreBola);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label = new QLabel(WidgetNombreBola);
-        label->setObjectName(QString::fromUtf8("label"));
+        label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout->addWidget(label);
 
         lNombreBola = new QLabel(WidgetNombreBola);
-        lNombreBola->setObjectName(QString::fromUtf8("lNombreBola"));
+        lNombreBola->setObjectName(QStringLiteral("lNombreBola"));
 
         horizontalLayout->addWidget(lNombreBola);
 
@@ -66,14 +69,14 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         label_2 = new QLabel(WidgetNombreBola);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setObjectName(QStringLiteral("label_2"));
 
         horizontalLayout_2->addWidget(label_2);
 
         comboNombre = new QComboBox(WidgetNombreBola);
-        comboNombre->setObjectName(QString::fromUtf8("comboNombre"));
+        comboNombre->setObjectName(QStringLiteral("comboNombre"));
 
         horizontalLayout_2->addWidget(comboNombre);
 
@@ -84,18 +87,18 @@ public:
         verticalLayout_2->addLayout(verticalLayout);
 
         label_3 = new QLabel(WidgetNombreBola);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setObjectName(QStringLiteral("label_3"));
 
         verticalLayout_2->addWidget(label_3);
 
         horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_3->addItem(horizontalSpacer);
 
         frameImagen = new QFrame(WidgetNombreBola);
-        frameImagen->setObjectName(QString::fromUtf8("frameImagen"));
+        frameImagen->setObjectName(QStringLiteral("frameImagen"));
         frameImagen->setMinimumSize(QSize(244, 204));
         frameImagen->setFrameShape(QFrame::StyledPanel);
         frameImagen->setFrameShadow(QFrame::Raised);
@@ -106,13 +109,13 @@ public:
         verticalLayout_2->addLayout(horizontalLayout_3);
 
         horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_4->addItem(horizontalSpacer_2);
 
         botonCambiarNombre = new QPushButton(WidgetNombreBola);
-        botonCambiarNombre->setObjectName(QString::fromUtf8("botonCambiarNombre"));
+        botonCambiarNombre->setObjectName(QStringLiteral("botonCambiarNombre"));
 
         horizontalLayout_4->addWidget(botonCambiarNombre);
 
@@ -127,12 +130,12 @@ public:
 
     void retranslateUi(QWidget *WidgetNombreBola)
     {
-        WidgetNombreBola->setWindowTitle(QApplication::translate("WidgetNombreBola", "Form", nullptr));
-        label->setText(QApplication::translate("WidgetNombreBola", "Nombre Actual", nullptr));
-        lNombreBola->setText(QApplication::translate("WidgetNombreBola", "Fulano", nullptr));
-        label_2->setText(QApplication::translate("WidgetNombreBola", "Nuevo Nombre", nullptr));
-        label_3->setText(QApplication::translate("WidgetNombreBola", "Color o Imagen", nullptr));
-        botonCambiarNombre->setText(QApplication::translate("WidgetNombreBola", "Cambiar Nombre", nullptr));
+        WidgetNombreBola->setWindowTitle(QApplication::translate("WidgetNombreBola", "Form", Q_NULLPTR));
+        label->setText(QApplication::translate("WidgetNombreBola", "Nombre Actual", Q_NULLPTR));
+        lNombreBola->setText(QApplication::translate("WidgetNombreBola", "Fulano", Q_NULLPTR));
+        label_2->setText(QApplication::translate("WidgetNombreBola", "Nuevo Nombre", Q_NULLPTR));
+        label_3->setText(QApplication::translate("WidgetNombreBola", "Color o Imagen", Q_NULLPTR));
+        botonCambiarNombre->setText(QApplication::translate("WidgetNombreBola", "Cambiar Nombre", Q_NULLPTR));
     } // retranslateUi
 
 };

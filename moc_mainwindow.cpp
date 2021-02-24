@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.8)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.5)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.12.8. It"
+#error "This file was generated using the moc from 5.9.5. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[22];
-    char stringdata0[337];
+    QByteArrayData data[23];
+    char stringdata0[354];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -52,7 +52,8 @@ QT_MOC_LITERAL(17, 238, 14), // "slotDInfoHijas"
 QT_MOC_LITERAL(18, 253, 24), // "slotGuardarConfiguracion"
 QT_MOC_LITERAL(19, 278, 23), // "slotCargarConfiguracion"
 QT_MOC_LITERAL(20, 302, 17), // "slotDNombresBolas"
-QT_MOC_LITERAL(21, 320, 16) // "slotDTablaExamen"
+QT_MOC_LITERAL(21, 320, 16), // "slotDTablaExamen"
+QT_MOC_LITERAL(22, 337, 16) // "slotDFramePrueba"
 
     },
     "MainWindow\0senyalBolaNueva\0\0Bola*\0"
@@ -65,17 +66,17 @@ QT_MOC_LITERAL(21, 320, 16) // "slotDTablaExamen"
     "slotDTablaInfo\0slotDInfoHijas\0"
     "slotGuardarConfiguracion\0"
     "slotCargarConfiguracion\0slotDNombresBolas\0"
-    "slotDTablaExamen"
+    "slotDTablaExamen\0slotDFramePrueba"
 };
 #undef QT_MOC_LITERAL
 
 static const uint qt_meta_data_MainWindow[] = {
 
  // content:
-       8,       // revision
+       7,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -83,27 +84,28 @@ static const uint qt_meta_data_MainWindow[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  109,    2, 0x06 /* Public */,
-       4,    0,  112,    2, 0x06 /* Public */,
-       5,    3,  113,    2, 0x06 /* Public */,
+       1,    1,  114,    2, 0x06 /* Public */,
+       4,    0,  117,    2, 0x06 /* Public */,
+       5,    3,  118,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,  120,    2, 0x0a /* Public */,
-       7,    0,  121,    2, 0x0a /* Public */,
-       8,    0,  122,    2, 0x0a /* Public */,
-       9,    0,  123,    2, 0x0a /* Public */,
-      10,    0,  124,    2, 0x0a /* Public */,
-      11,    0,  125,    2, 0x0a /* Public */,
-      12,    0,  126,    2, 0x0a /* Public */,
-      13,    0,  127,    2, 0x0a /* Public */,
-      14,    0,  128,    2, 0x0a /* Public */,
-      15,    0,  129,    2, 0x0a /* Public */,
-      16,    0,  130,    2, 0x0a /* Public */,
-      17,    0,  131,    2, 0x0a /* Public */,
-      18,    2,  132,    2, 0x0a /* Public */,
-      19,    0,  137,    2, 0x0a /* Public */,
-      20,    0,  138,    2, 0x0a /* Public */,
-      21,    0,  139,    2, 0x0a /* Public */,
+       6,    0,  125,    2, 0x0a /* Public */,
+       7,    0,  126,    2, 0x0a /* Public */,
+       8,    0,  127,    2, 0x0a /* Public */,
+       9,    0,  128,    2, 0x0a /* Public */,
+      10,    0,  129,    2, 0x0a /* Public */,
+      11,    0,  130,    2, 0x0a /* Public */,
+      12,    0,  131,    2, 0x0a /* Public */,
+      13,    0,  132,    2, 0x0a /* Public */,
+      14,    0,  133,    2, 0x0a /* Public */,
+      15,    0,  134,    2, 0x0a /* Public */,
+      16,    0,  135,    2, 0x0a /* Public */,
+      17,    0,  136,    2, 0x0a /* Public */,
+      18,    2,  137,    2, 0x0a /* Public */,
+      19,    0,  142,    2, 0x0a /* Public */,
+      20,    0,  143,    2, 0x0a /* Public */,
+      21,    0,  144,    2, 0x0a /* Public */,
+      22,    0,  145,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    2,
@@ -127,6 +129,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -134,7 +137,7 @@ static const uint qt_meta_data_MainWindow[] = {
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<MainWindow *>(_o);
+        MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->senyalBolaNueva((*reinterpret_cast< Bola*(*)>(_a[1]))); break;
@@ -156,26 +159,27 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 16: _t->slotCargarConfiguracion(); break;
         case 17: _t->slotDNombresBolas(); break;
         case 18: _t->slotDTablaExamen(); break;
+        case 19: _t->slotDFramePrueba(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (MainWindow::*)(Bola * );
+            typedef void (MainWindow::*_t)(Bola * );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::senyalBolaNueva)) {
                 *result = 0;
                 return;
             }
         }
         {
-            using _t = void (MainWindow::*)();
+            typedef void (MainWindow::*_t)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::jugadorChoqued)) {
                 *result = 1;
                 return;
             }
         }
         {
-            using _t = void (MainWindow::*)(int , int , Bola * );
+            typedef void (MainWindow::*_t)(int , int , Bola * );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MainWindow::senyalnuevaColision)) {
                 *result = 2;
                 return;
@@ -184,14 +188,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject MainWindow::staticMetaObject = { {
-    &QMainWindow::staticMetaObject,
-    qt_meta_stringdata_MainWindow.data,
-    qt_meta_data_MainWindow,
-    qt_static_metacall,
-    nullptr,
-    nullptr
-} };
+const QMetaObject MainWindow::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_MainWindow.data,
+      qt_meta_data_MainWindow,  qt_static_metacall, nullptr, nullptr}
+};
 
 
 const QMetaObject *MainWindow::metaObject() const
@@ -213,13 +213,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 20)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 19;
+        _id -= 20;
     }
     return _id;
 }

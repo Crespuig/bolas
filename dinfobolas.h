@@ -15,6 +15,7 @@ class Onda{
         Onda();
         Onda(int x, int y);
         int posX, posY, ciclos;
+        int color;
 
 };
 

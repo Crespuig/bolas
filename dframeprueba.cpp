@@ -1,4 +1,4 @@
-#include "dinfobolas.h"
+#include "dframeprueba.h"
 #include <QVector>
 #include <QString>
 #include <QPainter>
@@ -6,19 +6,21 @@
 #include <QDebug>
 #include <QVariant>
 
-Onda::Onda(int x, int y) : posX(x), posY(y), ciclos(0){
+/*Onda::Onda(int x, int y) : posX(x), posY(y), ciclos(0){
 
 }
 Onda::Onda(){
     ciclos = 0;
-}
+}*/
 
-WidgetOndas::WidgetOndas(int ancho, int alto, QWidget * parent) : anchoPrincipal(ancho), altoPrincipal(alto), QWidget(parent){
+WidgetLineas::WidgetLineas(int ancho, int alto, QVector<Bola *> *bolas, QWidget * parent) : anchoPrincipal(ancho), altoPrincipal(alto), QWidget(parent){
 
     temporizador = new QTimer();
-    temporizador->setInterval(100);
+    temporizador->setInterval(1);
     temporizador->setSingleShot(false);
     temporizador->start();
+
+    vector = bolas;
 
     connect(temporizador, SIGNAL(timeout()),
         this, SLOT(slotTemporizador()));
@@ -33,43 +35,39 @@ WidgetOndas::WidgetOndas(int ancho, int alto, QWidget * parent) : anchoPrincipal
 
 }
 
-void WidgetOndas::paintEvent(QPaintEvent * event){
+void WidgetLineas::paintEvent(QPaintEvent * event){
     QPainter pintor(this);
     //pintor.drawEllipse(20,20,10,10);
 
-    for (int i = 0; i < ondas.size(); i++){
-        QBrush brush(ondas[i].color);
+    for (int i = 0; i < vector->size(); i++){
+        QBrush brush(vector->at(i)->color);
         pintor.setBrush(brush);
-        pintor.drawEllipse(ondas[i].posX, ondas[i].posY, 4 + 2 * ondas[i].ciclos, 4 + 2 * ondas[i].ciclos);
+        pintor.drawRect(vector->at(i)->posicionX / 2, vector->at(i)->posicionY / 2, 10, 10);
+
+
     }
 
-    for (int i = 0; i < ondas.size(); i++){
-        if (ondas[i].ciclos++ >= 10){
-            ondas.remove(i);
-            return;
-        }
-        
-    }
+
     
 }
 
-void WidgetOndas::nuevaOnda(int x, int y){
+/*void WidgetOndas::nuevaOnda(int x, int y){
     float xDibujo = (float) x * (float) ((float)width() / (float) anchoPrincipal);
     float yDibujo = (float) y * (float) ((float)height() / (float) altoPrincipal);
     
     Onda nueva(xDibujo, yDibujo);
 
     ondas.append(nueva);
-}
+}*/
 
-void WidgetOndas::slotTemporizador(){
+void WidgetLineas::slotTemporizador(){
     
     update();
 
 }
 
 
-DInfoBolas::DInfoBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent){
+DFramePrueba::DFramePrueba(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent){
     setupUi(this);
 
     temporizador = new QTimer();
@@ -79,22 +77,26 @@ DInfoBolas::DInfoBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent
 
     vector = bolas;
 
-    bolaSeleccionada = NULL;
+    //bolaSeleccionada = NULL;
 
-    connect(temporizador, SIGNAL(timeout()),
-        this, SLOT(slotInfoBolas()));
+    /*connect(temporizador, SIGNAL(timeout()),
+        this, SLOT(slotActualizarVector()));*/
 
-    connect(listaBolas, SIGNAL(itemClicked(QListWidgetItem *)),
-        this, SLOT(slotRecogerBola(QListWidgetItem *)));
+    /*connect(listaBolas, SIGNAL(itemClicked(QListWidgetItem *)),
+        this, SLOT(slotRecogerBola(QListWidgetItem *)));*/
 
     
     QHBoxLayout * layout = new QHBoxLayout();
-    wo = new WidgetOndas(800, 600);
-    layout->addWidget(wo);
-    frameColisiones->setLayout(layout);
+    wl = new WidgetLineas(400, 400, vector);
+    layout->addWidget(wl);
+    framePrueba->setLayout(layout);
 }
 
-QListWidgetItem * DInfoBolas::getInformacionBolas(Bola *bola){
+/*DFramePrueba::slotActualizarVector(){
+
+}*/
+
+/*QListWidgetItem * DInfoBolas::getInformacionBolas(Bola *bola){
     QString info = (bola->nombre) + ","
                     " Pos x: " + QString::number(bola->posicionX) + ","
                     " Pos y: " + QString::number(bola->posicionY) + ","
@@ -115,9 +117,9 @@ QListWidgetItem * DInfoBolas::getInformacionBolas(Bola *bola){
     //qDebug()<<item->text();
 
     return item;
-}
+}*/
 
-void DInfoBolas::slotInfoBolas(){
+/*void DInfoBolas::slotInfoBolas(){
     listaBolas->clear();
 
     for (int i = 0; i < vector->size(); i++){
@@ -138,7 +140,7 @@ void DInfoBolas::slotOnda(int posX, int posY, Bola* bolaRecibida){
 
  void DInfoBolas::slotRecogerBola(QListWidgetItem * item){
      bolaSeleccionada = vector->at(item->data(Qt::EditRole).toInt());
-}
+}*/
 
 
 /*

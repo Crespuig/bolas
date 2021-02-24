@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dchart.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,10 +10,13 @@
 #define UI_DCHART_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QHeaderView>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,15 +29,15 @@ public:
     void setupUi(QDialog *DChart)
     {
         if (DChart->objectName().isEmpty())
-            DChart->setObjectName(QString::fromUtf8("DChart"));
+            DChart->setObjectName(QStringLiteral("DChart"));
         DChart->resize(735, 497);
         buttonBox = new QDialogButtonBox(DChart);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setGeometry(QRect(380, 450, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         frameChart = new QFrame(DChart);
-        frameChart->setObjectName(QString::fromUtf8("frameChart"));
+        frameChart->setObjectName(QStringLiteral("frameChart"));
         frameChart->setGeometry(QRect(20, 20, 691, 421));
         frameChart->setFrameShape(QFrame::StyledPanel);
         frameChart->setFrameShadow(QFrame::Raised);
@@ -48,7 +51,7 @@ public:
 
     void retranslateUi(QDialog *DChart)
     {
-        DChart->setWindowTitle(QApplication::translate("DChart", "Dialog", nullptr));
+        DChart->setWindowTitle(QApplication::translate("DChart", "Dialog", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dtablainfo.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,9 @@
 #define UI_DTABLAINFO_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
@@ -27,15 +29,15 @@ public:
     void setupUi(QDialog *dTablaInfo)
     {
         if (dTablaInfo->objectName().isEmpty())
-            dTablaInfo->setObjectName(QString::fromUtf8("dTablaInfo"));
+            dTablaInfo->setObjectName(QStringLiteral("dTablaInfo"));
         dTablaInfo->resize(829, 602);
         buttonBox = new QDialogButtonBox(dTablaInfo);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setGeometry(QRect(470, 560, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tablaInfo = new QTableView(dTablaInfo);
-        tablaInfo->setObjectName(QString::fromUtf8("tablaInfo"));
+        tablaInfo->setObjectName(QStringLiteral("tablaInfo"));
         tablaInfo->setGeometry(QRect(5, 11, 811, 551));
 
         retranslateUi(dTablaInfo);
@@ -47,7 +49,7 @@ public:
 
     void retranslateUi(QDialog *dTablaInfo)
     {
-        dTablaInfo->setWindowTitle(QApplication::translate("dTablaInfo", "Dialog", nullptr));
+        dTablaInfo->setWindowTitle(QApplication::translate("dTablaInfo", "Dialog", Q_NULLPTR));
     } // retranslateUi
 
 };

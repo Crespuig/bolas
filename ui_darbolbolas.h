@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'darbolbolas.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,9 @@
 #define UI_DARBOLBOLAS_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
@@ -29,17 +31,17 @@ public:
     void setupUi(QDialog *DArbolBolas)
     {
         if (DArbolBolas->objectName().isEmpty())
-            DArbolBolas->setObjectName(QString::fromUtf8("DArbolBolas"));
+            DArbolBolas->setObjectName(QStringLiteral("DArbolBolas"));
         DArbolBolas->resize(479, 399);
         verticalLayout = new QVBoxLayout(DArbolBolas);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         vistaArbol = new QTreeView(DArbolBolas);
-        vistaArbol->setObjectName(QString::fromUtf8("vistaArbol"));
+        vistaArbol->setObjectName(QStringLiteral("vistaArbol"));
 
         verticalLayout->addWidget(vistaArbol);
 
         buttonBox = new QDialogButtonBox(DArbolBolas);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
 
@@ -55,7 +57,7 @@ public:
 
     void retranslateUi(QDialog *DArbolBolas)
     {
-        DArbolBolas->setWindowTitle(QApplication::translate("DArbolBolas", "Dialog", nullptr));
+        DArbolBolas->setWindowTitle(QApplication::translate("DArbolBolas", "Dialog", Q_NULLPTR));
     } // retranslateUi
 
 };

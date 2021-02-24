@@ -22,6 +22,7 @@
 #include "dguardarconf.h"
 #include "dNombresBolas.h"
 #include "dtablaexamen.h"
+#include "dframeprueba.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -53,7 +54,7 @@ public:
     QSystemTrayIcon *trayIcon;
 
     int alto = 800;
-    int ancho = 600;
+    int ancho = 800;
     int altoInicio, anchoInicio;
 
     void inicializarBolas();
@@ -72,6 +73,7 @@ public:
     DGuardarConf * dGuardarConf;
     DNombresBolas * dNombresBolas;
     DTablaExamen * dTablaExamen;
+    DFramePrueba * dFramePrueba;
     
     QAction * accionDInformacion;
     QAction * accionDInfoBolas;
@@ -86,6 +88,7 @@ public:
     QAction * accionCargarConfiguracion;
     QAction * accionDNombresBolas;
     QAction * accionDTablaExamen;
+    QAction * accionDFramePrueba;
 
 private:
     void performDrag();
@@ -110,6 +113,7 @@ public slots:
     void slotCargarConfiguracion();
     void slotDNombresBolas();
     void slotDTablaExamen();
+    void slotDFramePrueba();
 
 signals:
     void senyalBolaNueva(Bola *);

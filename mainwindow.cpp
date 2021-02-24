@@ -57,6 +57,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dGuardarConf = NULL;
         dNombresBolas = NULL;
         dTablaExamen = NULL;
+        dFramePrueba = NULL;
 
         if ( QSystemTrayIcon::isSystemTrayAvailable()  == true ) {
                 trayIcon = new QSystemTrayIcon(this);
@@ -172,6 +173,11 @@ void MainWindow::incializarMenus(){
         connect(accionDTablaExamen, SIGNAL(triggered()),
                 this, SLOT(slotDTablaExamen()));
         menuNombresBolas->addAction(accionDTablaExamen);
+
+        accionDFramePrueba = new QAction("Frame prueba", this);
+        connect(accionDFramePrueba, SIGNAL(triggered()),
+                this, SLOT(slotDFramePrueba()));
+        menuNombresBolas->addAction(accionDFramePrueba);
 
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
@@ -673,6 +679,15 @@ void MainWindow::slotDTablaExamen(){
         }
         
         dTablaExamen->show();
+}
+
+void MainWindow::slotDFramePrueba(){
+        if (dFramePrueba == NULL){
+                dFramePrueba = new DFramePrueba(&bolas);
+                
+        }
+        
+        dFramePrueba->show();
 }
 
 

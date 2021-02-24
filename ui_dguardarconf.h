@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dguardarconf.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,10 +10,13 @@
 #define UI_DGUARDARCONF_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QHeaderView>
 
 QT_BEGIN_NAMESPACE
 
@@ -27,18 +30,18 @@ public:
     void setupUi(QDialog *dGuardarConf)
     {
         if (dGuardarConf->objectName().isEmpty())
-            dGuardarConf->setObjectName(QString::fromUtf8("dGuardarConf"));
+            dGuardarConf->setObjectName(QStringLiteral("dGuardarConf"));
         dGuardarConf->resize(291, 266);
         buttonBox = new QDialogButtonBox(dGuardarConf);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setGeometry(QRect(-110, 190, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         checkAlto = new QCheckBox(dGuardarConf);
-        checkAlto->setObjectName(QString::fromUtf8("checkAlto"));
+        checkAlto->setObjectName(QStringLiteral("checkAlto"));
         checkAlto->setGeometry(QRect(80, 50, 111, 21));
         checkAncho = new QCheckBox(dGuardarConf);
-        checkAncho->setObjectName(QString::fromUtf8("checkAncho"));
+        checkAncho->setObjectName(QStringLiteral("checkAncho"));
         checkAncho->setGeometry(QRect(80, 110, 131, 21));
 
         retranslateUi(dGuardarConf);
@@ -50,9 +53,9 @@ public:
 
     void retranslateUi(QDialog *dGuardarConf)
     {
-        dGuardarConf->setWindowTitle(QApplication::translate("dGuardarConf", "Dialog", nullptr));
-        checkAlto->setText(QApplication::translate("dGuardarConf", "Guardar Alto", nullptr));
-        checkAncho->setText(QApplication::translate("dGuardarConf", "Guardar Ancho", nullptr));
+        dGuardarConf->setWindowTitle(QApplication::translate("dGuardarConf", "Dialog", Q_NULLPTR));
+        checkAlto->setText(QApplication::translate("dGuardarConf", "Guardar Alto", Q_NULLPTR));
+        checkAncho->setText(QApplication::translate("dGuardarConf", "Guardar Ancho", Q_NULLPTR));
     } // retranslateUi
 
 };

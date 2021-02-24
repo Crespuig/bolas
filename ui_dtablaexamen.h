@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dtablaexamen.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.8
+** Created by: Qt User Interface Compiler version 5.9.5
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,9 @@
 #define UI_DTABLAEXAMEN_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
@@ -27,15 +29,15 @@ public:
     void setupUi(QDialog *DTablaExamen)
     {
         if (DTablaExamen->objectName().isEmpty())
-            DTablaExamen->setObjectName(QString::fromUtf8("DTablaExamen"));
+            DTablaExamen->setObjectName(QStringLiteral("DTablaExamen"));
         DTablaExamen->resize(767, 465);
         buttonBox = new QDialogButtonBox(DTablaExamen);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setGeometry(QRect(420, 430, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tablaExamen = new QTableView(DTablaExamen);
-        tablaExamen->setObjectName(QString::fromUtf8("tablaExamen"));
+        tablaExamen->setObjectName(QStringLiteral("tablaExamen"));
         tablaExamen->setGeometry(QRect(10, 10, 741, 401));
 
         retranslateUi(DTablaExamen);
@@ -47,7 +49,7 @@ public:
 
     void retranslateUi(QDialog *DTablaExamen)
     {
-        DTablaExamen->setWindowTitle(QApplication::translate("DTablaExamen", "Dialog", nullptr));
+        DTablaExamen->setWindowTitle(QApplication::translate("DTablaExamen", "Dialog", Q_NULLPTR));
     } // retranslateUi
 
 };
