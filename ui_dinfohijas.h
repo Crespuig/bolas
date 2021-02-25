@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dinfohijas.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.5
+** Created by: Qt User Interface Compiler version 5.12.8
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,12 +10,9 @@
 #define UI_DINFOHIJAS_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
 
@@ -32,21 +29,21 @@ public:
     void setupUi(QDialog *DinfoHijas)
     {
         if (DinfoHijas->objectName().isEmpty())
-            DinfoHijas->setObjectName(QStringLiteral("DinfoHijas"));
+            DinfoHijas->setObjectName(QString::fromUtf8("DinfoHijas"));
         DinfoHijas->resize(1058, 752);
         buttonBox = new QDialogButtonBox(DinfoHijas);
-        buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
         buttonBox->setGeometry(QRect(710, 710, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         tabBolasHijas = new QTabWidget(DinfoHijas);
-        tabBolasHijas->setObjectName(QStringLiteral("tabBolasHijas"));
+        tabBolasHijas->setObjectName(QString::fromUtf8("tabBolasHijas"));
         tabBolasHijas->setGeometry(QRect(10, 10, 1041, 691));
         tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
+        tab->setObjectName(QString::fromUtf8("tab"));
         tabBolasHijas->addTab(tab, QString());
         tab_2 = new QWidget();
-        tab_2->setObjectName(QStringLiteral("tab_2"));
+        tab_2->setObjectName(QString::fromUtf8("tab_2"));
         tabBolasHijas->addTab(tab_2, QString());
 
         retranslateUi(DinfoHijas);
@@ -58,9 +55,9 @@ public:
 
     void retranslateUi(QDialog *DinfoHijas)
     {
-        DinfoHijas->setWindowTitle(QApplication::translate("DinfoHijas", "Dialog", Q_NULLPTR));
-        tabBolasHijas->setTabText(tabBolasHijas->indexOf(tab), QApplication::translate("DinfoHijas", "Tab 1", Q_NULLPTR));
-        tabBolasHijas->setTabText(tabBolasHijas->indexOf(tab_2), QApplication::translate("DinfoHijas", "Tab 2", Q_NULLPTR));
+        DinfoHijas->setWindowTitle(QApplication::translate("DinfoHijas", "Dialog", nullptr));
+        tabBolasHijas->setTabText(tabBolasHijas->indexOf(tab), QApplication::translate("DinfoHijas", "Tab 1", nullptr));
+        tabBolasHijas->setTabText(tabBolasHijas->indexOf(tab_2), QApplication::translate("DinfoHijas", "Tab 2", nullptr));
     } // retranslateUi
 
 };

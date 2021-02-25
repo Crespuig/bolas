@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'widgetbolatabla.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.5
+** Created by: Qt User Interface Compiler version 5.12.8
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,9 +10,7 @@
 #define UI_WIDGETBOLATABLA_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
@@ -33,19 +31,19 @@ public:
     void setupUi(QWidget *widgetBolaTabla)
     {
         if (widgetBolaTabla->objectName().isEmpty())
-            widgetBolaTabla->setObjectName(QStringLiteral("widgetBolaTabla"));
+            widgetBolaTabla->setObjectName(QString::fromUtf8("widgetBolaTabla"));
         widgetBolaTabla->resize(1033, 600);
         tablaHijas = new QTableView(widgetBolaTabla);
-        tablaHijas->setObjectName(QStringLiteral("tablaHijas"));
+        tablaHijas->setObjectName(QString::fromUtf8("tablaHijas"));
         tablaHijas->setGeometry(QRect(15, 11, 1011, 391));
         checkBoxHijas = new QCheckBox(widgetBolaTabla);
-        checkBoxHijas->setObjectName(QStringLiteral("checkBoxHijas"));
+        checkBoxHijas->setObjectName(QString::fromUtf8("checkBoxHijas"));
         checkBoxHijas->setGeometry(QRect(330, 500, 92, 23));
         listaHijas = new QComboBox(widgetBolaTabla);
-        listaHijas->setObjectName(QStringLiteral("listaHijas"));
+        listaHijas->setObjectName(QString::fromUtf8("listaHijas"));
         listaHijas->setGeometry(QRect(260, 410, 171, 31));
         frameCoordenadas = new QFrame(widgetBolaTabla);
-        frameCoordenadas->setObjectName(QStringLiteral("frameCoordenadas"));
+        frameCoordenadas->setObjectName(QString::fromUtf8("frameCoordenadas"));
         frameCoordenadas->setGeometry(QRect(440, 410, 361, 181));
         frameCoordenadas->setFrameShape(QFrame::StyledPanel);
         frameCoordenadas->setFrameShadow(QFrame::Raised);
@@ -57,8 +55,8 @@ public:
 
     void retranslateUi(QWidget *widgetBolaTabla)
     {
-        widgetBolaTabla->setWindowTitle(QApplication::translate("widgetBolaTabla", "Form", Q_NULLPTR));
-        checkBoxHijas->setText(QApplication::translate("widgetBolaTabla", "CheckBox", Q_NULLPTR));
+        widgetBolaTabla->setWindowTitle(QApplication::translate("widgetBolaTabla", "Form", nullptr));
+        checkBoxHijas->setText(QApplication::translate("widgetBolaTabla", "CheckBox", nullptr));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dframeprueba.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.5
+** Created by: Qt User Interface Compiler version 5.12.8
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,13 +10,10 @@
 #define UI_DFRAMEPRUEBA_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QHeaderView>
 
 QT_BEGIN_NAMESPACE
 
@@ -29,15 +26,15 @@ public:
     void setupUi(QDialog *DFramePrueba)
     {
         if (DFramePrueba->objectName().isEmpty())
-            DFramePrueba->setObjectName(QStringLiteral("DFramePrueba"));
+            DFramePrueba->setObjectName(QString::fromUtf8("DFramePrueba"));
         DFramePrueba->resize(567, 488);
         buttonBox = new QDialogButtonBox(DFramePrueba);
-        buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
         buttonBox->setGeometry(QRect(150, 440, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         framePrueba = new QFrame(DFramePrueba);
-        framePrueba->setObjectName(QStringLiteral("framePrueba"));
+        framePrueba->setObjectName(QString::fromUtf8("framePrueba"));
         framePrueba->setGeometry(QRect(90, 20, 400, 400));
         framePrueba->setFrameShape(QFrame::StyledPanel);
         framePrueba->setFrameShadow(QFrame::Raised);
@@ -51,7 +48,7 @@ public:
 
     void retranslateUi(QDialog *DFramePrueba)
     {
-        DFramePrueba->setWindowTitle(QApplication::translate("DFramePrueba", "Dialog", Q_NULLPTR));
+        DFramePrueba->setWindowTitle(QApplication::translate("DFramePrueba", "Dialog", nullptr));
     } // retranslateUi
 
 };

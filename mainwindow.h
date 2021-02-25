@@ -23,6 +23,8 @@
 #include "dNombresBolas.h"
 #include "dtablaexamen.h"
 #include "dframeprueba.h"
+#include "dVisorEventos.h"
+#include "evento.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -38,6 +40,9 @@ public:
     void mouseReleaseEvent(QMouseEvent * evento);
     void mouseMoveEvent(QMouseEvent *event);
     void closeEvent(QCloseEvent *event);
+
+    QVector<Evento> eventos;
+    int instante;
 
 
     Bola bola;
@@ -74,6 +79,7 @@ public:
     DNombresBolas * dNombresBolas;
     DTablaExamen * dTablaExamen;
     DFramePrueba * dFramePrueba;
+    DVisorEventos * dVisorEventos;
     
     QAction * accionDInformacion;
     QAction * accionDInfoBolas;
@@ -89,6 +95,7 @@ public:
     QAction * accionDNombresBolas;
     QAction * accionDTablaExamen;
     QAction * accionDFramePrueba;
+    QAction * accionDVisorEventos;
 
 private:
     void performDrag();
@@ -114,6 +121,7 @@ public slots:
     void slotDNombresBolas();
     void slotDTablaExamen();
     void slotDFramePrueba();
+    void slotDVisorEventos();
 
 signals:
     void senyalBolaNueva(Bola *);

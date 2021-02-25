@@ -58,6 +58,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
         dNombresBolas = NULL;
         dTablaExamen = NULL;
         dFramePrueba = NULL;
+        dVisorEventos = NULL;
 
         if ( QSystemTrayIcon::isSystemTrayAvailable()  == true ) {
                 trayIcon = new QSystemTrayIcon(this);
@@ -179,6 +180,14 @@ void MainWindow::incializarMenus(){
                 this, SLOT(slotDFramePrueba()));
         menuNombresBolas->addAction(accionDFramePrueba);
 
+        QMenu * menuVisorEventos = menuBar()->addMenu("Visor eventos");
+        accionDVisorEventos = new QAction("Visor eventos", this);
+        accionDVisorEventos->setStatusTip("Visor eventos");
+        accionDVisorEventos->setToolTip("Visor eventos");
+        connect(accionDVisorEventos, SIGNAL(triggered()),
+                this, SLOT(slotDVisorEventos()));
+        menuVisorEventos->addAction(accionDVisorEventos);
+
         menuContextual = new QMenu("contexttual");
         menuContextual->addAction(accionDInformacion);
         menuContextual->addAction(accionDInfoBolas);
@@ -237,6 +246,10 @@ void MainWindow::keyPressEvent(QKeyEvent * evento){
         if (evento->key() == Qt::Key_Left){
                 bolaJugador->velX = bolaJugador->velX - 0.1;
         }
+
+        Evento ev(Evento::pulsacion, 0, 0, instante);
+        ev.tecla = evento->key();
+        eventos.append(ev);
         
 
 }
@@ -314,6 +327,8 @@ void MainWindow::slotRepintar(){
 
                                         emit senyalnuevaColision(bolas.at(i)->posicionX, bolas.at(i)->posicionY, bolas.at(i));
 
+                                        eventos.append(Evento(Evento::colisionBolas, bolas.at(i)->posicionX, bolas.at(i)->posicionY, instante));
+
                                         if (bolas.size() < 25){
                                                int numeroRandom = random()%100;
                                                if(numeroRandom < 18){
@@ -341,6 +356,7 @@ void MainWindow::slotRepintar(){
         }
         bolaJugador->moverBola(width(), height());
         
+        instante++;
 
         update();
 }
@@ -688,6 +704,15 @@ void MainWindow::slotDFramePrueba(){
         }
         
         dFramePrueba->show();
+}
+
+void MainWindow::slotDVisorEventos(){
+        if (dVisorEventos == NULL){
+                dVisorEventos = new DVisorEventos(&eventos);
+                
+        }
+        
+        dVisorEventos->show();
 }
 
 
