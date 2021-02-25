@@ -30,6 +30,11 @@ Q_OBJECT
 
         QTimer *temporizador;
 
+        Bola * bola;
+
+    protected:
+        void mousePressEvent(QMouseEvent *);    
+
     public slots:
         void slotTemporizador();    
 

@@ -5,6 +5,7 @@
 #include <QHBoxLayout>
 #include <QDebug>
 #include <QVariant>
+#include <QMouseEvent>
 
 /*Onda::Onda(int x, int y) : posX(x), posY(y), ciclos(0){
 
@@ -63,6 +64,13 @@ void WidgetLineas::paintEvent(QPaintEvent * event){
 void WidgetLineas::slotTemporizador(){
     
     update();
+
+}
+
+void WidgetLineas::mousePressEvent(QMouseEvent * event){
+    
+    bola->posicionX = event->x() * 2;
+    bola->posicionY = event->y() * 2;
 
 }
 

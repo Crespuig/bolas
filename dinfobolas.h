@@ -31,7 +31,16 @@ Q_OBJECT
 
         void nuevaOnda(int x, int y);
 
+        void recogerBola(Bola *);
+
+        Bola * bola;
+
         QTimer *temporizador;
+
+        
+
+    protected:
+        void mousePressEvent(QMouseEvent *);        
 
     public slots:
         void slotTemporizador();    

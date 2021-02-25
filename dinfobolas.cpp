@@ -5,6 +5,8 @@
 #include <QHBoxLayout>
 #include <QDebug>
 #include <QVariant>
+#include <QMouseEvent>
+
 
 Onda::Onda(int x, int y) : posX(x), posY(y), ciclos(0){
 
@@ -29,6 +31,8 @@ WidgetOndas::WidgetOndas(int ancho, int alto, QWidget * parent) : anchoPrincipal
     nuevaOnda(40, 40);
     nuevaOnda(50, 50);
     nuevaOnda(60, 60);*/
+
+    bola = NULL;
 
 
 }
@@ -68,12 +72,25 @@ void WidgetOndas::slotTemporizador(){
 
 }
 
+void WidgetOndas::mousePressEvent(QMouseEvent * event){
+    if(bola != NULL){
+        bola->posicionX = event->x() * 2;
+        bola->posicionY = event->y() * 2;
+    }
+    
+
+}
+
+void WidgetOndas::recogerBola(Bola * bola){
+    bola = bola;
+}
+
 
 DInfoBolas::DInfoBolas(QVector<Bola*> *bolas, QWidget * parent) : QDialog(parent){
     setupUi(this);
 
     temporizador = new QTimer();
-    temporizador->setInterval(100);
+    temporizador->setInterval(500);
     temporizador->setSingleShot(false);
     temporizador->start();
 
@@ -106,7 +123,7 @@ QListWidgetItem * DInfoBolas::getInformacionBolas(Bola *bola){
 
     for (int i = 0; i < vector->size(); i++){
         if (vector->at(i) == bola){
-            item->setData(Qt::EditRole, QVariant(i));
+            //item->setData(1, QVariant(i));
             item->setText(info);
         }
             
@@ -137,7 +154,8 @@ void DInfoBolas::slotOnda(int posX, int posY, Bola* bolaRecibida){
 }
 
  void DInfoBolas::slotRecogerBola(QListWidgetItem * item){
-     bolaSeleccionada = vector->at(item->data(Qt::EditRole).toInt());
+     bolaSeleccionada = vector->at(listaBolas->row(item));
+     wo->recogerBola(bolaSeleccionada);
 }
 
 
